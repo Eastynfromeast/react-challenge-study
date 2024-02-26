@@ -26,3 +26,104 @@
         c.push(1);
 
 # Types of TS
+    it's better to let typescript infer the types as much as we can!
+    ## basic type
+        let a: number[] = [1,2];
+
+    ## optional type   
+        can be undefined
+        const player:{
+            name:string,
+            age?: number, // age? : number | undefined
+        }={
+            name: "nico",
+        }
+
+        if(player.age < 10){
+            // error 
+        }
+    
+    ## Type Alias
+        type Age = number;
+        type Name = string;
+        type Player = {
+            name: Name,
+            age?: Age,
+        }
+
+        const Nuri : Player = {
+            name: "nuri",
+            age: 3,
+        }
+
+        ### how to specify return type of function 
+            function playerMaker(name:string) : Player {
+                return {
+                    name: name
+                }
+            }
+            const nuri = playMaker("nuri")
+            const playerMaker = (name:string) : Player =>({name})
+        
+        where to put type?
+            - after name
+            - after argumentName
+            - after function's ()
+
+        ** Only on Typescript
+            readonly 
+                cannot modify
+
+            Tuple
+                create array
+                minimum length
+                should have specific type on specific position
+
+                const player:[string, number, boolean] = ["nico",1,true]
+                player[0] = 1 // error  
+        
+            any
+                default type
+                any could be any type
+                advice - "Not use ANY!" 
+                completely disables everything
+        
+        ** Exclusive in Typescript!
+            * unknown 
+                get some protection from TS
+                let a : unknow;
+                if(typeof a ==='number'){ // need to check the type of a
+                    let b = a + 1
+                }
+
+                if(typeof a==='string'){
+                    let b = a.toUpperCase();
+                }
+
+            * void
+                for function that don't return anything
+                "emptyness"
+                don't need to specify type of void
+                function hello(){
+                    console.log('x');
+                }
+
+            * never
+                when a function "never" return
+
+                function hello(name:string|number):never{
+                    if(typeof name === "string"){
+                        name:string
+                    }else if(typeof name === "number"){
+                        naem:number
+                    }else {
+                        name:never
+                        // this code should never run
+                    }
+                    
+                    //throw new Error("xxx")
+                }
+
+
+        
+                
