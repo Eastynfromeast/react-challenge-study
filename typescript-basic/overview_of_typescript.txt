@@ -1,0 +1,28 @@
+# How Typescript Works
+    your browser understand Typescript
+
+    Typescript protects you from our stupidity
+    (Javascript is sooooo unsafe)
+    
+    The protection happens "before" the code is turned into JS
+        it lets you not to do stupid thing in Javascript
+        BEFORE RUNTIME
+
+# Implicit Types vs Explicit Types
+    we don't have to specify what type the variable is in JS
+    
+    Typescript is going to "infer" your type for you
+    Implicit way    
+        let a = hello; // a is a string type
+    
+    Explicit == Specific way 
+        let b: boolean = "x";
+            (how we communicate with type-checker)
+
+        let c = [1,2,3];
+        c.push("hello"); // error!
+
+        let c :number[] = [];
+        c.push(1);
+
+# Types of TS
