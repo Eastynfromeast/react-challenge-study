@@ -1,0 +1,17 @@
+ form - default event is submission
+
+  we cannot directly modify state on React unlike JavaScript array.push()
+    we never modify state directly!
+    has to use modifier function setSth
+
+  State to be always NEW
+  let food = [1,2,3,4]
+  food = [..food,6]
+
+  two different options of use modifier function
+    a. setToDo("") : put value
+    b. setToDo(()=>{ }); :send a function 
+
+  React JS makes you use JavaScript more 
+    map() allows you to transform the items in array into new way
+    Each child in a list should have a unique "key" prop.

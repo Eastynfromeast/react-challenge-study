@@ -1,0 +1,83 @@
+# useState
+
+Sometimes, you want to be able run some code only on the first render 
+    ex. get the data from API
+  
+    How useEffect works
+      function useEffect(effect: EffectCallback, deps?: DependencyList)
+        Dependency? the things react js should watch
+      useEffect(function, [array? ]);
+      execute some codes only when some specific state changes
+  useEffect(() => {
+		console.log("SEARCH FOR", keyword);
+	}, [keyword]); // telling JS plz watching "keyword"
+
+  console.log 가 두번씩 찍히는 이유
+    A. In development mode React renders everything twice :) Nothing is wrong with your code.
+    this is only for development mode. useEffect will not be called twice in production, only when we are on `localhost`
+
+    useEffect runs a function when the props change, or only at the start or end of the component's lifecycle.
+
+    The best idea React has is it will refresh your UI everytime when things change
+    
+    useEffect is a defense of react work
+
+    Examples
+        useEffect(() => {
+            console.log("I run only once.");
+        }, []); // react js has nothing to watch
+
+        useEffect(() => {
+            console.log("I run when 'keyword' changes.");
+        }, [keyword]); // telling JS plz watching "keyword"
+
+        useEffect(() => {
+            console.log("I run when 'counter' changes.");
+        }, [counter]);
+        useEffect(() => {
+            console.log("I run when 'keyword' or 'counter' changes.");
+        }, [keyword, counter]); // run when any of them changes
+
+     Open curly brackets to write down JavaScript
+
+    when component is destroyed, "Cleanup function " can be executed!
+        Allows you to do sth when the component is destroyed
+        has to return another function
+
+    ## useEffect allows us to choose when should the code run
+        - only the first render
+        - when something changed
+        - when the component is destroyed == Cleanup function 
+
+    Usually ppl write everything inside useEffect
+
+        useEffect(()=>{
+            console.log("hi :)");
+            return ()=> console.log("bye :(");
+        },[]);
+        
+        useEffect(() => {
+            console.log("hi :)");
+            return function () {
+                console.log("bye :(");
+            };
+        }, []);
+
+    Open curly brackets to write down JavaScript
+
+    ## Cleanup function 
+        when component is destroyed, "Cleanup function " can be executed!
+        Allows you to do sth when the component is destroyed
+        has to return another function
+
+        useEffect allows us to choose when should the code run
+        - only the first render
+        - when something changed
+        - when the component is destroyed == Cleanup function 
+
+        useEffect(() => {
+            console.log("hi :)");
+            return function () {
+                console.log("bye :(");
+            };
+        }, []);

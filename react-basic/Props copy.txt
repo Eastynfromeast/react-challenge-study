@@ -1,0 +1,27 @@
+function component ==  a function returns some JSX
+    inline-style write down like an object
+    props is an object and the only argument
+
+    props or {keyName}
+        props로 받아올 경우 객체 데이터와 동일하게 props.keyName 로 사용
+        {keyName} 으로 쓸 경우, keyName 고대로 쓰면 됨
+
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue("Revert Changes");
+    <Btn colorType="1" context={value} onClick={changeValue} /> 
+    커스텀 컴포넌트에 onClick을 넣는다면 eventlistener가 아니라 그냥 하나의 prop 일 뿐 -> Btn으로 들어가는 내용들
+        자동으로 들어가지 않으므로 직접 원하는 곳에 작성해서 사용해줘야 한다
+    HTML 요소에 넣어야 eventlistener!
+
+    React JS optimizes your application
+        we can decide whether rerender the elms or not
+        => React.memo() 
+        const MemorizedBtn = React.memo(Btn);
+
+    React tells us what's wrong -> Prop Types
+    allows you to check what is a type of props you are receiving
+
+    Can we send functions and array in the props? YES!
+        type of Props is an Object! lol
+
+    We learned how to configure our component will be more reusable == props

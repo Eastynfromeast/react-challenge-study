@@ -1,0 +1,41 @@
+# 조별 활동
+ - 조별 활동 템플릿 : 함께 활동할 조원들의 정보와 조별 활동 기록
+ - 1:1 커피챗
+ - TA 무물 타임 (5주차, 9주차)
+ - 온라인 모각코 : 음성 채팅방 이용
+ - TA 오프라인 모각코 : 4주차, 8주차
+    함께 오프라인에서 모여 공부
+    장소, 날짜 사전 안내
+
+# 디스코드
+    ## 채널
+        - 공지사항
+        - 일상
+        - 일일 - 스프린트
+        - 주간 회고
+        - 코드 리뷰
+    
+# Crew & TA
+    커뮤니티 지향적
+    질문을 열심히 하세요~
+        잘 질문하는 법은 하다 보면 알게 됩니다
+
+    캐럿마켓 - Next JS
+        update 필요
+        API가 필요 없는...!
+        그치만 이번 스터디는 구버전으로
+
+    졸업률 25% ~ 30% ㄷㄷ
+
+    good craftman of quality code
+    
+    반복해서 읽는 개발책 
+        Designing Data Intensive Application
+        Crafting Intepreter - how to make a programming language : super nerd
+        Zero to One - building a company
+        Table of Contents by Naval Ravikant
+
+# 다음 주간 회의
+    24.02.28(수)
+    React JS 기초 졸업 발표
+    소그룹

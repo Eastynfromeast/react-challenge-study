@@ -1,0 +1,77 @@
+기본 바닐라 JS 
+    1. HTML 만들고
+    2. Bring Javascript
+    3. listen event listener
+    4. update HTML
+
+#2-0. Introduction
+    make UI interactive <- created literally for this!
+    bunch of good ideas interactive developer need
+
+#2-1. Before React
+    import
+        1. React import : element를 생성하고 eventlistener를 추가
+        2. ReactDOM : react element를 html로 변환 
+
+#2-3. Events in React
+    보통 리액트를 쓸 때처럼 작성한 것은 아니지만 바닐라 js와의 비교를 위해 
+    "React.createElement()"를 사용
+    
+    바닐라 자바스크립트와의 차이점
+    : html 작성을 따로 할 필요 없이 creatElement를 생성하면서 event, style 등을 바로 추가할 수 있어 편리
+    => ReactJS는 Javascript의 interactivity(상호작용)을 위해 만들어졌다 
+
+    ex)
+    // body 안에 div#root 존재 
+    const root = document.getElementById("root");
+    
+    const h3 = React.createElement("h3",{
+        onMouseEnter: () => console.log("mouse entered"),
+    },"title");
+
+    const btn = React.createElement("button",{
+        onClick: ()=> console.log("button clicked"),
+        style:{
+            backgroundColor: "tomato",
+        }
+    },"The button");
+    
+    const container = React.createElement("div",null (property 자리),[h3, btn]);
+
+    ReactDOM.render(contaier,root);
+
+#2-4&5. JSX
+    a syntax extends to JS
+    react element를 html 문법처럼 사용하기 위해 만들어짐 
+
+    JSX는 바로 적용할 수는 없다 -> Babel 필요 : JSX를 browser가 이해할 수 있는 모양으로 바꿔줌 
+    - 우리는 JSX 방식으로 코드를 작성하고
+    - 바벨은 그걸 풀어서
+    - head 부분에 script 를 넣어준다
+
+    지금은 html에 react를 cdn으로 불러오는 방식을 사용하고 있기 때문에 
+    바벨도 cdn으로 불러오지만 평소엔 이렇게 하지 X -> 느리기 떄문
+
+
+
+ put react elm on HTML, translate react to javascript 
+    This one is hard way not easy way which people use generally 
+
+    making sth hard way to understand why they created easy way
+    
+    React is built for interactivity of JS
+    React JS - allows us to make elms interactive == like an engine
+    Reacd DOM - allows us to put all react elements in the HTML and turn into HTML elms
+
+    react는 원하는 HTML을 업데이트 할 수 있다 tell reactDOM put span inside the rood!
+    starting from JS and finsihing at HTML
+
+    JSX == a syntax extension to JS
+    Babel code transformer of JSX into sth browser understand
+    
+    render means Show the elm to the user in React!
+    
+    Your own components should be an upper case 
+    Lower case is for html tags
+
+    how we can use components inside other components

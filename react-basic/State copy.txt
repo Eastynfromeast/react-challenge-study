@@ -1,0 +1,50 @@
+# State
+    State? data that changes
+
+connect to the variable by curly bracket 
+need to refresh the UI == rerendering == show a new version of Container
+
+render()? weird way of rerendering UI
+    function render(){
+        ReactDOM.render(<App/>, root);
+    }
+    ???  we~~~~ird!
+
+Power of React!
+    Vanilla JS changes the whole,
+    React updates only the differences!
+
+
+
+console.log(data); // receive an array => [value(undefined), function]
+const food = ["pizza","tomato"];
+const [myFav, secondFav] = food;
+[data, setData] data name you want to change and new value of the data
+
+
+ useState() <- automatically trigger RE-RENDER
+    
+    modify the data and render AGAIN
+    the best way to automatically trigger rerender
+
+    when you change(==modify) the state with modifier function, then the component is going to be again and re-rendered again with new value
+        console.log("rendered");
+        console.log(counter);
+    change the state => re-render!
+
+
+    React.useState(), onChange를 이용해 계산기 만들기
+    input select 사용
+
+    
+    
+    counter can be modified from somewhere else
+    setCounter(직접 값 넣기)
+    setCounter(previous value 계산)
+    want to calculate next state based on the current state => use "function"
+
+    for, class -> JavaScript words invalid for JSX
+    React gives you sort of fake event since React optimizes event
+    input vlaue
+
+    react-dom.development.js:73 Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`. <- disabled를 추가해주니까 사라짐 value를 한쪽에서만 수정 가능하도록 만들어서 그런 듯

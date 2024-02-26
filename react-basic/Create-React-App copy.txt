@@ -1,0 +1,41 @@
+# create-react-app
+    create a lot of script and a lot of pre-configuration ready for you
+    can publish website in easy and cool way
+
+    1. download Node.js
+        node -v
+        npx command
+    
+    npx create-react-app react-app-name
+
+    node.js 
+        package.json - can check every scripts
+
+    npm start : Starts the development server.
+
+    npm run build : Bundles the app into static files for production.
+
+    npm test : Starts the test runner.
+
+    npm run eject
+        Removes this tool and copies build dependencies, configuration files
+        and scripts into the app directory. If you do this, you can’t go back!
+
+    We(React team) suggest that you begin by typing:
+
+        cd react-for-beginner
+        npm start
+
+    create-react-app can do auto-reload
+
+    src folder 
+        the most important thing = index.js
+
+    CSS module
+        import styles from "./Button.module.css";
+        button className={styles.btn}>{text}</button>
+        CRA turns CSS code (any css files ends with ".module.css") into JS Object
+        and turns className randomly
+        => We don't need to remember whole className!
+        각기 다른 모듈에서 같은 이름의 클래스명을 사용해도 문제 될 것이 없다
+        왜냐? CRA가 자동으로 랜덤하게 클래스명을 바꿔주니까!
