@@ -91,7 +91,7 @@
         ** Exclusive in Typescript!
             * unknown 
                 get some protection from TS
-                let a : unknow;
+                let a : unknown;
                 if(typeof a ==='number'){ // need to check the type of a
                     let b = a + 1
                 }

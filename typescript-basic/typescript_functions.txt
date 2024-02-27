@@ -1,0 +1,118 @@
+# Call Signatures
+ 
+    How typescript cannot infer some type of function?
+    Typescipt doesn't like "any"
+    const add = (a:number,b:number) =>a+b;
+
+    Call Signature?
+        just remember "signature"
+        let typescript know how this functions is goint to be called
+
+        how to declare?
+            ex.
+            type Add = (a:number, b:number) => number; 
+            const add:Add = (a,b) => a+b // No need to write what types of a and b is
+            
+            => you can create types and you can describe how your function is going to work before implementing 
+
+        - Call Signatures will "not" be complied into JavaScript
+
+
+# Overloading
+    (we are gonna using packages or libraries made from others, but we have to know what it is)
+    happens when a function has multiple and different call signatures
+    
+    a very bad example
+        type Add = {
+            (a:number, b: number) : number
+            (a:number, b: string) : number
+        }
+
+        const add: Add = (a,b) => {
+            if(typeof b === "string") return a 
+            return a+b
+        }
+
+    an exmple that you are gonna encounter in your daily developer life (Next.js)
+    ex.
+        type Config = {
+            path: string, // sometime like this
+            state: object, // and sometimes you can send like this
+        }
+        type Push = {
+            (path:string):void // this returns nothing cuz it returns "void"
+            (config: Config):void
+        }
+
+        const push:Push = (config) => {
+            if(typeof config === "string") {
+                console.log(config)
+            }else {
+                console.log(config.path, config.state)
+            }
+        }
+        
+    what happens with many different arugment number
+    ex.
+        type Add = { // different number of parameters
+            (a:number, b: number) : number
+            (a:number, b: number, c: number) : number, // c is optional
+        }
+
+        const add:Add(a  b, c?: number) => {
+            if(c) return a+b+c
+            return a + b
+        }
+       
+
+
+# Polymorphism 다형성
+    How TS gives you Polymorphism by Generics
+
+    Polymorphism ? many,several,multi + form, structure
+    => many different form
+
+    type SuperPrint = {
+        (arr: number[]): void
+        (arr: boolean[]): void
+        (arr: string[]): void
+        (arr:(number|boolean)[]) : void
+    }
+
+    const superPrint : SuperPrint = (arr) => {
+        arr.forEach(i => console.log(i))
+    }
+
+
+    superPrint([1,2,3,4])
+    superPrint([true,false, ture])
+    superPrint(["a","b","c"])
+
+    concrete type? number, boolean, string, unknown, void
+    generic?
+        kind of placeholder for the types
+        typescript will infer what the type is by generic
+        when we don't know what type will be in advance, only know it will be concrete type
+        allow you still type your function 
+        you don't have to write every single case of types with generic!
+
+        using a kinda placeholder when we write call signature of our function 
+
+        Hardest way to use generic
+        type SuperPrint = {
+            <T>(arr:T[]): T
+        }
+
+        const superPrint: SuperPrint = (arr) => arr[0];
+        
+        const a = superPrint([1,2,3,4])
+        const b = superPrint([true,false, ture])
+        const c = superPrint([1,true,"b","c"])
+
+
+# Generics Recap
+
+
+
+
+
