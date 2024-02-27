@@ -102,17 +102,59 @@
         type SuperPrint = {
             <T>(arr:T[]): T
         }
+         === type SuperPrint = <T, M>(a: T[], b:M) => T
 
-        const superPrint: SuperPrint = (arr) => arr[0];
+        const superPrint: SuperPrint = (a) => a[0];
         
         const a = superPrint([1,2,3,4])
         const b = superPrint([true,false, ture])
         const c = superPrint([1,true,"b","c"])
 
+        differenc with any and using generic?
+        
+        when using generic, TS creates a call signature!
+            generating call signature
+            '제네릭은 선언 시점이 아니라 생성 시점에 타입을 명시하여 하나의 타입만이 아닌 다양한 타입을 사용할 수 있도록 하는 기법이다.'
+        
+        add another generic
+            type SuperPrint = <T, M>(a: T[], b:M) => T
+            const a = ([1,2,3,4], "x")
 
-# Generics Recap
+            function superPrint<V>(a: V[]){
+                return a[0];
+            }
 
+            const a = superPrint<number>([1,2,3,4]);
 
+            type Player<E> ={
+                name: string,
+                extraInfo: E
+            }
+            type NicoExtra = {
+                favFood: string
+            }
+            type NicoPlayer = Player<NicoExtra>
+            const nico: Player<{favFood:string}> = {
+                name:"nico",
+                extraInfo: {
+                    favFood: "kimchi"
+                }
+            }
 
+            const lynn : Player<null>={
+                name:"lynn",
+                extraInfo: null
+            }
+
+            most basic TS is created by generic
+                type A = Array<number>;
+                let a: A = [1,2,3,4]
+            
+            function printAllNumbers(arr:Array<number>){
+
+            }
+
+            useState<number>() 
+                useState takes generic!
 
 
