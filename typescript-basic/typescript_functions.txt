@@ -100,15 +100,25 @@
 
         Hardest way to use generic
         type SuperPrint = {
+            <T>(arr: T[]) : T
+        }// telling typescipt to infer the type of the array and then one of the type will be returnd
+        // typescript makes every call signature different
+
+        const superPrint : SuperPrint = (arr) => arr[0] // we don't know the type of what my function is going to return
+
+        const a = superPrint([1,2,3,4]) // const a : number
+        const b = superPrint([true,false,false]) // const b : boolean
+        const c = superPrint(["a","b","c"]) // const c : string
+        const d = superPrint([1,2,true,false,"hello"]) // const d : number | boolean | string
+
+        
+        type SuperPrint = {
             <T>(arr:T[]): T
         }
          === type SuperPrint = <T, M>(a: T[], b:M) => T
 
         const superPrint: SuperPrint = (a) => a[0];
         
-        const a = superPrint([1,2,3,4])
-        const b = superPrint([true,false, ture])
-        const c = superPrint([1,true,"b","c"])
 
         differenc with any and using generic?
         
