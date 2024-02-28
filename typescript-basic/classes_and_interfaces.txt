@@ -1,0 +1,223 @@
+# Classes
+    Object-oriented programming
+
+    /*
+    How to creat classes in TS
+        private only for typescript not indept? in JS
+
+    abstract class
+        Cannot create an instance of an abstract class.
+        u could create an abstract method inside abstract class
+        method ? a function inside class
+        write a call signature instead of implementation of function
+        abstract method should be implemented in everyone extended the abstract class
+        
+        private - even extended child cannot use, only available inside the class
+        protected - extended child can use 
+        public - you can use everywhere, default
+
+        all this protection is happening in TS
+*/
+
+abstract class User{
+     constructor (
+        protected firstName: string,
+        protected lastName: string,
+        protected nickName : string
+    ) {}
+    abstract getNickname() : void // only call sig
+    
+    getFullName(){ 
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+class Player extends User {
+    getNickName(){
+        console.log(this.nickName)
+    }
+}
+
+const nico = new Player("nico","las","니꼬");
+nico.getFullName();
+
+// dictionary of wordSpacing
+type Words = {
+    [key: string] : string // when the object has limited amount of keys and you don't know the property name but type
+}
+
+class Dict {
+    private words:Words
+    constructor (){
+        this.words = {} // immediately initialize property on the constructor
+    }
+    add(word:Word){ // we can use class like a type!
+        if(this.words[word.term] === undefined){
+            this.words[word.term] = word.def;
+        }
+    }
+    def(term:string){
+        return this.words[term]
+    }
+    static hello(){ // JS? Static!
+        return "hello";
+    }
+}
+
+class Word { // want to expose the value, but not want to modify outside => readonly
+    constructor(
+        public readonly term: string,
+        public readonly def: string
+    ){}
+}
+
+const kimchi = new Word("kimchi","한국의 음식")
+
+
+const dict = new Dict()
+dict.add(kimchi);
+dict.def("kimchi")
+
+Dict.hello();
+
+// TS is very very versatile!
+type Nickname = string;
+type HealthN = number;
+type Friends = Array<string>
+
+type Player = {
+    nickname : Nickname,
+    healthBar: HealthN
+}
+
+const nico : Player = {
+    nickname: "nico",
+    healthBar: 10
+}
+
+type Food  = string; 
+const pizza:Food = "delicious"
+
+
+type Team = "red"|"blue"|"yellow" // concrete specific value
+type Health = 1 | 5 | 10
+
+// almost same but kinda diffrent
+/*
+     type can be whatever you want
+        type keywords are more versatile than interface
+     interface is used to specify to typescript the shape of an object
+
+     type Name = {
+
+     }
+
+     interface Name {
+
+     }
+
+*/
+interface Runner  {
+    nickname: string,
+    team : Team,
+    health: Health
+}
+
+
+
+const nuri : Runner = {
+    nickname: "nuri",
+    team: "red",
+    health: 10
+}
+
+// Interface syntax is much similar to object-oriented programming
+// you can accumulate properties in interface
+interface User {
+    readonly name:string
+}
+interface User{
+    lastName : string
+}
+interface User {
+    health : number
+}
+interface Player extends User {
+
+}
+
+
+/*
+    type User = {
+        name: string
+    }
+    type Player = User {
+
+    }
+*/
+
+const nico : Player = {
+    name:"nico",
+    lastName: "N",
+    health : 10
+}
+
+/*
+    type vs. interface
+        the way of extension is different
+
+    abstract class 
+        allows you to specify the property and methods that you want other class to have
+        abstract class becomes a noraml class in JS code!
+        why we are creating this? a blue print to have standard functions,standard properties and standard methods
+
+    interface is lighter way
+        it disappears when it complied to JavaScript
+
+    How can I force a class to follow a specific shpae using an interface?
+*/
+
+/*abstract class User{
+    constructor(
+        protected firstName : string,
+        protected lastName: string,
+    ){}
+    abstract sayHi(name:string):string
+    abstract fullName():string
+}*/
+// specifies a shape of an object or an class
+interface User{ // reduce your file size! not complied as JavaScript
+    firstName: string,
+    lastName: string,
+    sayHi(name:string):string
+    fullName():string // cannot have constructor in interface
+}
+
+interface Human {
+    health: number
+}
+class Player implements User, Human {
+  constructor(
+        public firstName: string, // you canno set property as private
+        public lastName: string,
+        public health: number
+  ){}
+
+  fullName(){
+    return `${this.firstName} ${this.lastName}`
+  }
+  sayHi(name: string){
+    return `Hello ${name}. My name is ${this.fullName()}`
+  }
+}
+
+function makeUser(user:User){
+    return "hi"
+}
+
+makeUser({
+    firstName: "Nuri",
+    lastName:"Jung",
+    fullName : () => "xx",
+    sayHi: (name) => "string"
+})
