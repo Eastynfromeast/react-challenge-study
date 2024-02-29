@@ -177,14 +177,16 @@ const nico : Player = {
     How can I force a class to follow a specific shpae using an interface?
 */
 
-/*abstract class User{
-    constructor(
-        protected firstName : string,
-        protected lastName: string,
-    ){}
-    abstract sayHi(name:string):string
-    abstract fullName():string
-}*/
+/*
+    abstract class User{
+        constructor(
+            protected firstName : string,
+            protected lastName: string,
+        ){}
+        abstract sayHi(name:string):string
+        abstract fullName():string
+    }
+*/
 // specifies a shape of an object or an class
 interface User{ // reduce your file size! not complied as JavaScript
     firstName: string,
@@ -221,3 +223,77 @@ makeUser({
     fullName : () => "xx",
     sayHi: (name) => "string"
 })
+
+
+/*
+    how to force classes to implement spcific methods and specific properties
+    interface 
+        not complied in JavaScript file
+    abstract class  
+        compiled in JS => bigger file size
+
+    type & interface
+        have same goal!  to explain TS the shape and type of class
+        both can replace abstract class
+        differences?
+            - type : 
+                cannot be duplicated
+                everything else of suggestion of using interfaces
+                    (type alias, constrict specific values )
+
+            - interface: 
+                can duplicate and add another properties = you can stack properties
+                use inteface if you are defining shapes of classes or objects
+        
+        from offical TS handbook
+            타입 별칭과 인터페이스의 차이점
+            : 타입 별칭과 인터페이스는 매우 유사하며, 대부분의 경우 둘 중 하나를 자유롭게 선택하여 사용할 수 있습니다. 
+            interface가 가지는 대부분의 기능은 type에서도 동일하게 사용 가능합니다. 
+            이 둘의 가장 핵심적인 차이는, 타입은 새 프로퍼티를 추가하도록 개방될 수 없는 반면, 인터페이스의 경우 항상 확장될 수 있다는 점입니다.
+            types cannot be reopend <-> interface is always extendable
+*/
+
+type PlayerA = {
+    name: string
+}
+
+type PlayerAA = PlayerA & {
+    lastName: string
+}
+
+type PlayerAA = {
+    health : number
+}
+const playerA: PlayerAA = {
+    name: "nuri",
+    lastName : "Jung"
+}
+/////
+interface PlayerB {
+    name: string
+}
+interface PlayerBB extends PlayerB {
+    lastName: string
+}
+interface PlayerBB {
+    health : number;
+}
+const playerB: PlayerBB = {
+    name: "nullnu",
+    lastName: "Suh",
+    health : 1
+}
+
+type PlayerC = {
+    firstName : string
+}
+
+interface PlayerD {
+    firstName : string
+}
+
+class User implements PlayerD {
+    constructor(
+        public firstName : string
+    ){}
+}
