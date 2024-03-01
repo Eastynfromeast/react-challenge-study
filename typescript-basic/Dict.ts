@@ -9,19 +9,35 @@
     exists 존재하는지 알려줌 
     bulkAdd [{term: "kimchi",definition: "대박이네~"},{term:"아파트",definition:"비싸네"}]
     bulkDelete ["김치", "아파트"]
+
+
+    if (this.words.hasOwnProperty(term)) {
+        delete this.words[term];
+    }
+
+*/
+/*
+    Nulnu's Dict class code challenge :)
 */
 type Words = {
 	[key: string]: string;
 };
 
+class Word {
+	constructor(public term: string, public definition: string) {}
+}
+
 class Dict {
 	private words: Words;
 	constructor() {
-		this.words = {}; // initialize words == this.words is an object
+		this.words = {};
 	}
 	add(word: Word) {
-		if (this.words[word.term] === undefined) {
+		if (word.term in this.words) {
+			console.log(`${word.term} is already in the dictionary`);
+		} else {
 			this.words[word.term] = word.definition;
+			console.log(`${word.term} is added to the dictionary`);
 		}
 	}
 	get(term: string) {
@@ -31,14 +47,16 @@ class Dict {
 	delete(term: string) {
 		if (term in this.words) {
 			delete this.words[term];
+			console.log(`${term} is deleted by delete function`);
 		} else {
-			console.log(`${term}은 존재하지 않는 단어입니다. 삭제할 단어를 수정해 주세요`);
+			console.log(`${term} does not exist in the dictionary. Try to modify the term.`);
 		}
 	}
 
 	update(term: string, definition: string) {
-		if (this.words[term] !== undefined) {
+		if (term in this.words) {
 			this.words[term] = definition;
+			console.log(`${term} is updated to ${definition}`);
 		}
 	}
 
@@ -48,41 +66,40 @@ class Dict {
 
 	count() {
 		const total: number = Object.keys(this.words).length;
-		const be: string = total > 1 ? "are" : "is";
-		console.log(`${total} of words ${be} in this dictionary`);
-		return Object.keys(this.words).length;
+		const be: string = total > 1 ? "words are" : "word is";
+		console.log(`${total} of ${be} in this dictionary`);
+		return total;
 	}
 
 	upsert(term: string, definition: string) {
-		if (this.words[term] !== undefined) {
-			this.words[term] = definition;
-			console.log(`${term} has been updated`);
-		} else {
-			this.words[term] = definition;
-			console.log(`${term} has been inserted`);
-		}
+		this.words.hasOwnProperty(term) ? console.log(`${term} has been updated`) : console.log(`${term} has been inserted`);
+		this.words[term] = definition;
 	}
 
 	exists(term: string) {
-		if (this.words[term] !== undefined) {
-			console.log(`${term} is in the dictionary`);
+		if (this.words.hasOwnProperty(term)) {
+			console.log(`${term} exists in the dictionary`);
 		} else {
-			console.log(`${term} is not exist in the dictionary. If you want to add it, use add();`);
+			console.log(`${term} does not exist in the dictionary. If you want to add it, try to add first :)`);
 		}
 	}
-	bulkAdd([{}]: string) {}
+	bulkAdd(newWords: [{ term: string; definition: string }]) {
+		newWords.forEach(({ term, definition }) => {
+			this.upsert(term, definition);
+		});
+
+		console.log(`${newWords.length} has been added by bulkAdd`);
+	}
 
 	bulkDelete(terms: string[]) {
-		terms.forEach((term: string) => {});
+		terms.forEach(term => {
+			if (term in this.words) {
+				delete this.words[term];
+				console.log(`${term} is deleted by bulkDelete`);
+			} else {
+				console.log(`${term} is not eliminated by bulkDelete since there is no such word in ${this}`);
+				return;
+			}
+		});
 	}
 }
-
-class Word {
-	constructor(public term: string, public definition: string) {}
-}
-
-const kimchi = new Word("kimchi", "Korean food");
-
-const dict = new Dict();
-dict.add(kimchi);
-dict.get("kimchi");
