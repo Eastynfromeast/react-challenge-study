@@ -61,6 +61,7 @@ class Dict {
 	}
 
 	showAll() {
+		// 수정 필요!
 		return this.words;
 	}
 

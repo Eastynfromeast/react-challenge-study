@@ -106,52 +106,57 @@ type Health = 1 | 5 | 10
 /*
      type can be whatever you want
         type keywords are more versatile than interface
+        type Age = number
+        type Name = {
+
+        }
+
+     
      interface is used to specify to typescript the shape of an object
+        == one purpose only!
+        interface Name {
 
-     type Name = {
-
-     }
-
-     interface Name {
-
-     }
+        }
 
 */
-interface Runner  {
-    nickname: string,
-    team : Team,
-    health: Health
-}
+    interface Runner  {
+        nickname: string,
+        team : Team,
+        health: Health
+    }
 
-
-
-const nuri : Runner = {
-    nickname: "nuri",
-    team: "red",
-    health: 10
-}
+    const nuri : Runner = {
+        nickname: "nuri",
+        team: "red",
+        health: 10
+    }
 
 // Interface syntax is much similar to object-oriented programming
 // you can accumulate properties in interface
-interface User {
-    readonly name:string
-}
-interface User{
-    lastName : string
-}
-interface User {
-    health : number
-}
-interface Player extends User {
-
-}
-
-
-/*
-    type User = {
-        name: string
+    interface User {
+        readonly name:string
     }
-    type Player = User {
+    interface User{
+        lastName : string
+    }
+    interface User {
+        health : number
+    }
+    interface Player extends User {}
+
+    const nuri: Player  = {
+        name: "nuri",
+        lastName: "Jung",
+        health: 100,
+    }
+
+/* when it comes to type...
+    type User = {
+        name: string,
+        lastname: string,
+        health : number,
+    }
+    type Player = User & {
 
     }
 */
@@ -163,11 +168,12 @@ const nico : Player = {
 }
 
 /*
+    #4.3 Interfaces pt.2
     type vs. interface
         the way of extension is different
 
     abstract class 
-        allows you to specify the property and methods that you want other class to have
+        allows you to specify the properties and methods that you want other class to have
         abstract class becomes a noraml class in JS code!
         why we are creating this? a blue print to have standard functions,standard properties and standard methods
 
@@ -178,7 +184,9 @@ const nico : Player = {
 */
 
 /*
-    abstract class User{
+    An abstract class is providing only a blue print that tells other classes should behave
+        JS doens't have a concept of abstract class
+    abstract class User {
         constructor(
             protected firstName : string,
             protected lastName: string,
@@ -186,13 +194,30 @@ const nico : Player = {
         abstract sayHi(name:string):string
         abstract fullName():string
     }
+
+    class Player extends User {
+        fullName(){
+            return `${this.firstName} ${this.lastName}`
+        }
+        sayHi(name:string){
+            return `Hello ${name}. My name is ${this.fullName()}`;
+        }
+    }
 */
-// specifies a shape of an object or an class
-interface User{ // reduce your file size! not complied as JavaScript
+
+/*
+    specifies a shape of an object or an class
+    reduce your file size! not complied as JavaScript
+    cannot have constructor in interface
+
+    use implements to inherit the interface
+    when you are implementing an interface, you cannot set property as private or protected
+*/
+interface User { 
     firstName: string,
     lastName: string,
     sayHi(name:string):string
-    fullName():string // cannot have constructor in interface
+    fullName():string 
 }
 
 interface Human {
@@ -200,7 +225,7 @@ interface Human {
 }
 class Player implements User, Human {
   constructor(
-        public firstName: string, // you canno set property as private
+        public firstName: string, 
         public lastName: string,
         public health: number
   ){}
@@ -213,10 +238,11 @@ class Player implements User, Human {
   }
 }
 
-function makeUser(user:User){
+// you can use an interface as a type
+function makeUser(user:User) : User{
     return "hi"
 }
-
+// you can force the shape of function and just put content like the interface, no need to use new Player()
 makeUser({
     firstName: "Nuri",
     lastName:"Jung",
@@ -226,15 +252,18 @@ makeUser({
 
 
 /*
+    4.4 Recap
     how to force classes to implement spcific methods and specific properties
     interface 
         not complied in JavaScript file
     abstract class  
         compiled in JS => bigger file size
+        better to use an interface if you use an abstract class just to explain shape of class
 
     type & interface
-        have same goal!  to explain TS the shape and type of class
+        have same goal!  to explain TS the shape and type of an object
         both can replace abstract class
+        both can be implemented to class
         differences?
             - type : 
                 cannot be duplicated
@@ -250,7 +279,7 @@ makeUser({
             : 타입 별칭과 인터페이스는 매우 유사하며, 대부분의 경우 둘 중 하나를 자유롭게 선택하여 사용할 수 있습니다. 
             interface가 가지는 대부분의 기능은 type에서도 동일하게 사용 가능합니다. 
             이 둘의 가장 핵심적인 차이는, 타입은 새 프로퍼티를 추가하도록 개방될 수 없는 반면, 인터페이스의 경우 항상 확장될 수 있다는 점입니다.
-            types cannot be reopend <-> interface is always extendable
+            == types cannot be reopend <-> interface is always extendable
 */
 
 type PlayerA = {
@@ -260,10 +289,13 @@ type PlayerA = {
 type PlayerAA = PlayerA & {
     lastName: string
 }
-
-type PlayerAA = {
+/*
+// cannot do like this!
+type PlayerAA = { 
     health : number
 }
+*/
+
 const playerA: PlayerAA = {
     name: "nuri",
     lastName : "Jung"
@@ -291,7 +323,7 @@ type PlayerC = {
 interface PlayerD {
     firstName : string
 }
-
+// both type and interface can be implemented to class
 class User implements PlayerD {
     constructor(
         public firstName : string
@@ -302,6 +334,18 @@ class User implements PlayerD {
 # Polymorphism
     is how we can write codes in different shapes
     by using generic with placeholder type
+
+     generic - use placeholder
+    TS will change the placeholder to concrete type
+
+    this makes looks code super pretty
+    and allows us to use the same piece of code with different types
+
+    1. sending the generic to the class : class LocalStorage<T>
+    2. the class is sending the generic to the interface : private storage: SStorage<T> = {};
+    3. the interface is using the generic
+
+    TS is creating  a call signature based on the generic
 
 interface SStorage<T> {
     [key:string]: T
