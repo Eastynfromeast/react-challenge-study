@@ -1,0 +1,101 @@
+Why Styled Components is the best way to React JS
+
+    All the styles are added to components before you use the components
+    we can name them whatever we want
+    styled-components creat a class name for you
+
+    const Name = styled.htmlTagName`
+    write down CSS codes;
+    `;
+
+# Adapting and Extending
+    ## Adapting
+        Use Props!
+        <Box bgColor="teal"/>
+        <Box bgColor="yellowgreen">
+
+        const Box = styled.div`
+        background-color: ${props => props.bgColor};
+        `;
+
+    ## Extending
+        const Circle = styled(Box)`
+        border-radius: 50px;
+        `;
+
+# Tricks - 'As' and Attrs
+    what if we don't want to use button tag as a button?
+      <Btn>Log in</Btn>
+			<Btn as="a" href="/">
+
+    we can set attributes on styled-components
+      <Input />
+      const Input = styled.input.attrs({ required: true, minLength: 10 })`
+        background-color: yellowgreen;
+      `;
+  
+    # Animation and Pseduo Selectors  
+      ## How to create animation in styled-components
+      import styled, { keyframes } from "styled-components";
+      const rotationAnimation = keyframes`
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      `;
+        
+      ## Pseudo Selectors
+        Once you can create a component by styled-components,
+        then you can target other components inside the styled-components!
+        ex.
+        const Emoji = styled.span`
+          font-size: 36px;
+        `;
+        const Box = styled.div`
+          height: 200px;
+          width: 200px;
+          background-color: tomato;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: ${rotationAnimation} 2s linear infinite;
+         ${Emoji} {
+            &:hover {
+              font-size: 98px;
+            }
+          }
+        `;
+# Themes
+    50% of dark mode
+      The other 50% will be local Estate Management
+    Theme? an object that has all your colors
+      very very useful since you put every colors in one single object
+      you can switch the object of colors
+
+    Our App is inside ThemeProvider, so every components can access the theme!
+      at index.js
+        import { ThemeProvider } from "styled-components";
+        
+        const darkTheme = {
+          textColor: "whitesmoke",
+          backgroundColor: "#111",
+        };
+        const lightTheme = {
+          textColor: "#111",
+          backgroundColor: "whitesmoke",
+        };
+          both darkTheme and lightTheme need to have same properties!
+        ```
+        <ThemeProvider theme={darkTheme}>
+          <App />
+        </ThemeProvider>
+     
+      at App.js
+        const Title = styled.h1`
+          color: ${props => props.theme.textColor};
+          &:hover {
+            color: teal;
+          }
+      `; // They only have reference to theme not colors
