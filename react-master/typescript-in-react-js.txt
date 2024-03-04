@@ -1,0 +1,93 @@
+# Typescript + React JS
+    Typescript is strongly-typed 
+    communicate about what type will be before programming language runs
+    != JavaScript is not stronlgy-typed
+
+    Typescript will compile and turn into normal JS
+        The protection is happened "before" compiling
+
+    How to add typescript
+    npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+    type definition for styled components   
+        최근에 설치하시는 분은 package.json에 styled-components 버전 확인 하신 후 6버전이라면 타입을 추가로 설치하지 않으셔도 됩니다.
+        https://styled-components.com/docs/faqs#what-do-i-need-to-do-to-migrate-to-v6
+
+    Definitely Typed community
+        you can contribute to the community by adding type of some libary
+        https://github.com/DefinitelyTyped/DefinitelyTyped
+
+    
+    ## Typing the props
+        How to protect our type?
+	        Prop Types - can check only "after" running the code
+            interface - we can check before the code runs!
+        
+        interface ContainerProps {
+            bgColor: string;
+        }
+        const Container = styled.div<ContainerProps>`
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: ${props => props.bgColor};
+            border-radius: 100%;
+        `;
+
+        interface CircleProps {
+            bgColor: string;
+        }
+
+        function Circle({ bgColor }: CircleProps) {
+            return <Container bgColor={bgColor} />;
+        }
+
+
+        interface PlayerShape {
+            name: string;
+            age: number;
+        }
+
+        const sayHello = (playerObj: PlayerShape) => `Hello ${playerObj.name} you are ${playerObj.age} years old.`;
+
+        sayHello({name:"nuri",age: 3});
+
+        *** 오류 수정
+            기존에 리액트 프로젝트에 타입스크립트를 추가하기
+                1. npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+                2. src 폴더 안에 있던 App.js와 index.js 파일을 App.tsx와 index.tsx 로 바꾼다.
+                3. "npx tsc --init" 명령어로 tsconfig.json 파일 생성한 후, tsconfig.json 파일에 "jsx": "react-jsx"추가
+                -------------------------------------------
+                {
+                "compilerOptions": {
+                ......
+                "jsx": "react-jsx"
+                }
+                }
+                -------------------------------------------
+                4. src/index.tsx에서 수정
+                --------------------------------------------------------------
+                import ReactDOM from "react-dom/client"
+
+                const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+                ---------------------------------------------------------------
+                5. npm i --save-dev @types/styled-components
+                    styled-components 에러 수정
+                + ./app 모듈 에러
+                   -> node_modules 폴더, pakage-lock.json 삭제후 npm install
+
+    ## Optional Props
+        prop required or not? use "?"
+        interface ContainerProps {
+            bgColor: string;
+            borderColor?: string; // string | undefined
+        }
+        css에서는 필수 값으로 넣어야 함
+        const Container = styled.div<ContainerProps>`
+            ```
+            background-color: ${props => props.bgColor};
+            border: 2px solid ${props => props.borderColor}; 
+        `;
+
+        default 값을 bgColor 로 설정 <- nullish 
+        <Container bgColor={bgColor} borderColor={borderColor ?? bgColor} />
