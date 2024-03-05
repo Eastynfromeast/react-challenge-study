@@ -91,3 +91,56 @@
 
         default 값을 bgColor 로 설정 <- nullish 
         <Container bgColor={bgColor} borderColor={borderColor ?? bgColor} />
+
+    ## State 
+        if you wanto cumstomize the state which is a rare occasion
+        const [value, setValue] = useState<number|string>(0);
+
+    ## Forms  
+        	event:React.FormEvent<HTMLInputElement>
+            event.currentTarget.value
+            const {
+                currentTarget :{value}
+            } = event;
+
+            ```js
+            객체 구조 분해: 객체의 속성 이름에 따라 값을 할당합니다.
+            let person = { name: "John", age: 30 };
+            let { name, age } = person;
+
+            console.log(name); // "John"
+            console.log(age); // 30
+
+    ## Themes
+        inside style.d.ts
+            import "styled-components";
+
+            // and extend them!
+            declare module "styled-components" {
+                export interface DefaultTheme {
+                    textColor: string;
+                    bgColor: string;
+                    btnColor: string;
+                }
+            }
+        
+        theme.ts  
+            https://styled-components.com/docs/api#typescript
+            import { DefaultTheme } from "styled-components/dist/types";
+
+            export const lightTheme: DefaultTheme = {
+                bgColor: "#fff",
+                textColor: "#111",
+                btnColor: "tomato",
+            };
+
+            export const darkTheme: DefaultTheme = {
+                bgColor: "#111",
+                textColor: "#fff",
+                btnColor: "teal",
+            };
+
+        Synthetic Event
+
+        You might need to downloade libraries not typed in typescript
+            npm i --save-dev @types/styled-components

@@ -1,0 +1,125 @@
+# React Router Upgrade Guide
+    ## BrowserRouter
+        not using anymore thanks to createBrowerRouter
+    in Router.tsx
+        <BrowserRouter>
+			<Header />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About />} />
+			</Routes>
+		</BrowserRouter>
+
+    in App.tsx
+        <div>
+			<Router />
+		</div>
+
+    ## createBrowserRouter
+        nico likes it
+        allows you create browser more declarative way without using jsx components
+
+        in Router.tsx
+            is everybody's mama and their children Home and About!
+        in Router.tsx
+            const router = createBrowserRouter([
+                {
+                    path: "/",
+                    element: <Root />,
+                    children: [
+                        {
+                            path: "",
+                            element: <Home />,
+                        },
+                        {
+                            path: "about",
+                            element: <About />,
+                        },
+                    ],
+                },
+            ]);
+        in Root.tsx
+            "Outlet" changes the components?
+            function Root() {
+                return (
+                    <div>
+                        <Header />
+                        <Outlet />
+                    </div>
+                );
+            }
+    
+    
+    ## Route
+        ### errorElement
+            errorElement to your root element path
+            basically show up none of the children were found
+    
+    ## useNavigate
+        When user logs in, you want to redirect
+        or when user goes to some page but they are not authorized in that page
+        ==> use useNavigate()
+
+        in Header.tsx
+        function Header() {
+            const navigate = useNavigate();
+            const onAboutClick = () => {
+                navigate("/about");
+            };
+            return (
+                <header>
+                    <ul>
+                        <li>
+                            <Link to={"/"}>Home</Link>
+                        </li>
+                        <li>
+                            <button onClick={onAboutClick}>About</button>
+                        </li>
+                    </ul>
+                </header>
+            );
+        }
+
+    ## useParams
+        { // /users 가 따로 존재하지 않고 바로 /users/userId로만 갈 때 사용
+            path: "users/:userId",
+            element: <User />,
+        },
+        
+        { // /users로 이동할 수 있고 그 하위 요소들로 이동가능할 때 이와 같이 사용
+            path: "users",
+            element : something,
+            children: [
+                {
+                    path:":userId",
+                    element: <User/>,
+                }
+            ]
+        },
+    
+    how to get parameters from the former page? userParams()
+    in Home
+        li의 key로 user.id를 보내고 있다?
+        <ul>
+            {users.map(user => (
+                <li key={user.id}>
+                    <Link to={`/users/${user.id}`}>{user.name}</Link>
+                </li>
+            ))}
+        </ul>
+    in User
+        function User() {
+            const { userId } = useParams(); // userId : 1
+
+            return (
+                <h1>
+                    User with id {userId} is named : {users[Number(userId) - 1].name}
+                </h1>
+            );
+        }        
+
+    ## Outlet
+
+    ## useOutletContext
+
+    ## useSearchParams
