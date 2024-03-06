@@ -141,6 +141,9 @@
             };
 
         Synthetic Event
-
+        
         You might need to downloade libraries not typed in typescript
-            npm i --save-dev @types/styled-components
+            Some libraries might not have typescript declration file
+            You can find famous libraries in DefinitelyTyped repository
+            then you can try
+                npm i --save-dev @types/name-of-your-package
