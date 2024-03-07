@@ -1,0 +1,25 @@
+# Styles
+    meyer.web reset css
+    or npm i styled-reset
+
+    Where is the perfect location to make whole documents' css reset?
+    styled-component
+        isolate a component style
+        -> createGlobalStyle
+            whole document style like fonts?
+            will go to the head component and inject global style
+
+    react fragment?
+
+    Install font
+
+    Where is the more acceptable place of ThemeProvider?
+
+    How we can send the data between the screen behind the scenes
+        use State!
+        we can send state via Link
+        in Coins.tsx 	
+        <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+
+        in Coin.tsx
+        const { state } = useLocation();
