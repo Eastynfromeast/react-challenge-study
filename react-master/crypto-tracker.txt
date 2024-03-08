@@ -23,3 +23,37 @@
 
         in Coin.tsx
         const { state } = useLocation();
+        	using state!
+	()(); functions which hits immediately
+
+	const info: {}
+	Typescript will know info is alway empty -> we have to explain TS what everything is
+		will use autoGenerate(?) in advanced level
+	
+	console.log(infoData);
+	click right on mouse and save it as Store as global variable
+	Object.keys(temp2).join(); // get keys 
+	Object.values(temp1).map(v=> typeof v).join() // get type of values
+
+	How you can explain to TS MANUALLY
+		interface ITag {
+			coin_counter: number;
+			ico_counter: number;
+			id: string;
+			name: string;
+		}
+		inteface IInfoData{
+			tag: ITag[];
+		}
+	
+	no dependency [] - run only one time
+		best practice of hook(useEffect) - should put something inside []
+		coinId will never change, so the result will be same with no dependency
+
+	? will protect us
+		if it is null or undefined or not there, beyond data will not be required
+
+	Nested router
+        we use Outlet instead
+    
+    useMatch()
