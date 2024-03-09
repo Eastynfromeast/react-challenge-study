@@ -57,3 +57,39 @@
         we use Outlet instead
     
     useMatch()
+		const priceMatch = useMatch("/:coinId/price"); => null or object!
+	
+	react query
+		we can delete useEffect that we wrote before thx to React Query
+		QueryProvider
+
+		fetcher function!
+			Nico - basically all my api things let it be far away from components
+
+    ueseQuery(uniqueId, fetcherFn)
+	    useQuery hook calls fetchCoins
+	    if fetcherFn is loading? react query will let you know isLoading
+	    when the fetcherFn finishes, react query will set the return on data
+
+        in api.ts
+
+        react query doesn't destroy the data
+            implementing cashe
+            react query doesn't hit the api after the first time
+
+        	Devtools
+		<ReactQueryDevtools initialIsOpen={true} />
+	
+	react query needs different key!
+		react query looks query as an array -> ["info",coinId]
+
+		why react query is cool?
+			1. fetcher function 
+			2. powerful cacheing machanism 
+			3. ReactQueryDevtools
+
+		how fetcher fn works
+			- argument? makes it as an anonymous funcion and send the argument
+			- keys : must be unique to be restored and used in cache system 
+				creating an array ["idName",id]
+			const {isLoading : changeLoadingName, data: changeDataName} = useQuery<interface>(id, fetcherFn);
