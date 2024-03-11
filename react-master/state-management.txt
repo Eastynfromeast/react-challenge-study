@@ -1,0 +1,18 @@
+# state management
+    Recoil - state management library for React JS
+
+    What is state management?
+        Dark mode <-> light mode
+
+        isDark : App -> Coins -> Coin // bad hierachy
+        what if we put props in bubble?! => recoil
+    
+        ## Recoil
+        put a value in a "bubble"
+        and give the bubble to the components which needs it
+        bubble? is called ATOM
+        
+        1. Recoil creates different atoms
+            it doesn't belongs to any component
+        2. Connect the component directly to the atom
+        ==> It is way better to manage your global state in a seperate place
