@@ -7,12 +7,95 @@
         isDark : App -> Coins -> Coin // bad hierachy
         what if we put props in bubble?! => recoil
     
-        ## Recoil
-        put a value in a "bubble"
-        and give the bubble to the components which needs it
-        bubble? is called ATOM
-        
-        1. Recoil creates different atoms
-            it doesn't belongs to any component
-        2. Connect the component directly to the atom
-        ==> It is way better to manage your global state in a seperate place
+    ## Recoil
+    put a value in a "bubble"
+    and give the bubble to the components which needs it
+    bubble? is called ATOM
+     
+    Atom = a piece of our state value!
+        completely independent from components
+        - we can listen to the value of atom
+        - we can modify the value of atom
+    
+    1. Recoil creates different atoms
+        it doesn't belongs to any component
+    2. Connect the component directly to the atom
+    ==> It is way better to manage your global state in a seperate place
+
+    How to get a atom(listen to the value of atom)
+        export const isDarkAtom = atom({
+            key: "isDark",
+            default: false,
+        });
+
+        const isDark = useRecoilValue(isDarkAtom);
+
+    How to modify an atom (modify the value of atom)
+    - Use it like setState(setterFn)
+        const setDarkAtom = useSetRecoilState(isDarkAtom);
+        const toggleDarkAtom = () => setDarkAtom(prev => !prev);
+
+    you need local state when you need to pass props to over two steps
+
+    ## React Hook Form
+    the best way in working with form in React, in Nico's opinion
+    
+    register(name, onBlur, onChange)
+        onBlur - click outside of input <-> focus
+        give all the thing register gives you to your input
+        <input {...register("Email")} placeholder="Email" />
+            reason of adding "..." in front of register
+                `register` is an object and we want to unpack all it's properties into the `input`.
+
+    useForm
+        watch() - function allows you to watch the form
+        handleSubmit - do validation, prevent event default and handel on call
+            require onValidFn and maybe onInvalidFn
+            const onValid = (data: any) => {
+                console.log(data);
+            }
+            <form onSubmit={handleSubmit(onValid)}> ... </form>
+            protecting not by HTML, but using JS, make it more secured
+            <input {...register("firstName", { required: true })} placeholder="First Name" />
+            
+            or we can set like this {value: value, mesaage: "put message here"}
+                - required can be boolean(true) or string(message)
+                - with other options, you can put an object with value and message
+                <input
+					{...register("passwordConfirmation", {
+						required: "Password is required",
+						minLength: {
+							value: 5,
+							message: "Your pw is too short.",
+						},
+					})}
+					placeholder="Password Confirmation"
+				/>
+
+        Using RegExp
+            https://regex101.com/
+            https://www.regexpal.com/ (offering a cheat sheet)
+
+        How to set defaul value of input
+            useForm<IFormData>({
+            defaultValues: {
+                email: "@gmail.com",
+            },
+        });
+
+        Extra validations
+            setError from react-hook-form
+                allows me to trigger a specific error
+                you can make a focus on the input you selected
+            
+                we can set a custom validation
+                <input
+                {...register("firstName", {
+                    required: "First name is required",
+                    validate: {
+                        noNico: value => (value.includes("nico") ? "no nicos allower" : true),
+                        noNick: value => (value.includes("nicl") ? "no nicos allower" : true),
+                    },
+                })} // validation type "noNico"
+                    placeholder="First Name"
+                />
