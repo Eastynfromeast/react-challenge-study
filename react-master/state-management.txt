@@ -93,9 +93,41 @@
                 {...register("firstName", {
                     required: "First name is required",
                     validate: {
-                        noNico: value => (value.includes("nico") ? "no nicos allower" : true),
-                        noNick: value => (value.includes("nicl") ? "no nicos allower" : true),
+                        noNico: value => (value.includes("nico") ? "no nicos allowed" : true),
+                        noNick: value => (value.includes("nicl") ? "no nicos allowed" : true),
                     },
                 })} // validation type "noNico"
                     placeholder="First Name"
                 />
+    ##Recap
+    1. import useForm
+    2. register, handleSubmit
+        {...register("firstName",{
+            required: "Required message",
+            pattern: {
+                value: /^[a-zA-Z-_]$/,
+                message: "Only English alphabet is allowed",
+            },
+            validate : {
+                customValidation : value => (value.includes("") ? "no space allowed" : true),
+            },
+        })}
+
+        interface IData {
+            [key:string]: string,
+        }
+        const onValid = (data: IData) => {
+            if(data.passwordConfirmation !== data.password){
+                setError("passwordConfirmation", { message: "Password are not the same" }, { shouldFocus: true });
+            }
+        }
+        <form onSubmit={handleSubmit(onValidFn,onInvalidFn)}>
+    
+    3. formState:{ errors }
+
+    4. setError
+        setError(
+            "passwordConfirmation",
+            { message: "Password is not same" },
+            { shouldFocus: true }
+        )

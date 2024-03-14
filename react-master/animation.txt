@@ -1,0 +1,57 @@
+# Framer Motion 
+    a production-ready motion library 
+
+    Instead of using "@import css", using library such as "react-helmet-async"
+   <HelmetProvider>
+    <App>
+        <Helmet>
+            <title>Framer Motion</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></link>
+            </Helmet>
+        </App>
+    </HelmetProvider>
+
+
+    ## framer-motion
+		styled(motion.div)
+
+		it's all about props
+			<Box transition={{ duration: 3 }} animate={{ borderRadius: "100px" }} />
+			change props and specify all the physics!
+		can move the configuration into a seperate object
+			const myVars = {
+				start: { scale: 0 },
+				end: { scale: 1, rotateZ: 360, transition: { type: "spring", delay: 0.5 } },
+			};
+
+			<Box variants={myVars} initial="start" animate="end" />
+        
+        children inherits initinal value and animate value from the parent
+            const boxVariants = {
+                start: {
+                    opacity: 0,
+                    scale: 0.45,
+                },
+                end: {
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                        type: "spring",
+                        duration: 1,
+                        bounce: 0.5,
+                        delayChildren: 0.5,
+                        staggerChildren: 0.2,
+                    },
+                },
+            };
+
+        Gestures
+        const biggerBoxRef = useRef<HTMLDivElement>(null);
+        
+        return (
+            <BiggerBox ref={biggerBoxRef}>
+                <Box drag dragSnapToOrigin dragElastic={1} dragConstraints={biggerBoxRef} variants={boxVariants} whileHover="hover" whileTap="click" />
+            </BiggerBox>
+        );
