@@ -55,3 +55,21 @@
                 <Box drag dragSnapToOrigin dragElastic={1} dragConstraints={biggerBoxRef} variants={boxVariants} whileHover="hover" whileTap="click" />
             </BiggerBox>
         );
+
+
+        ## useTransform & scroll
+        const x = useMotionValue(0);
+        const rotateZ = useTransform(x, [-600, 600], [-360, +360]);
+        const borderRadius = useTransform(x, [-600, 600], [0, 100]);
+        const gradient = useTransform(
+            x,
+            [-600, 600],
+            ["linear-gradient(135deg, rgb(136, 251, 255), rgb(39, 117, 100))", "linear-gradient(135deg, rgb(156, 136, 255), rgb(39, 60, 117))"]
+        );
+        const { scrollYProgress } = useScroll();
+        const scale = useTransform(scrollYProgress, [0, 1], [1, 5]);
+        return (
+            <Wrapper style={{ background: gradient }}>
+                <Box style={{ x, rotateZ, borderRadius, scale }} drag="x" dragSnapToOrigin />
+            </Wrapper>
+        );
