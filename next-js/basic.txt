@@ -1,0 +1,37 @@
+# What is Next.JS
+    best framework to build
+    is incredibly good
+    The web framework for when it matters
+
+    ## is it a library or framework?
+        React - a library
+            something that you use within your code
+            you are the one in control - architecture, session, etc...
+            you make all the decisions
+            library didn't make any decisions
+            React JS is a library building UI interface
+            You have all the freedom, you are the boss
+
+        Next.JS - a framework
+            something that uses your code == you are not in charge
+            framework will automate many things for you 
+                basically helps you
+            you are not in control == you have to follow the rules of the framework
+            you have to put a file in the right folder
+            Next.JS will call your code
+                the framework will execute your code
+            => we have to learn the rules
+                all we have to export sth in right shapes
+
+    ## manual installation
+        create a folder and open it in VS code
+        npm init -y
+            create a package.json file
+        license "MIT"
+        npm install react@latest next@latest react-dom@latest
+        add dev command on package.json
+            "scripts": {
+                "dev": "next dev"
+            },
+        directory "app" > page.tsx/jsx
+        npm run dev

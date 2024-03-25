@@ -57,7 +57,7 @@
         );
 
 
-        ## useTransform & scroll
+        ## useTransform & scrollg
         const x = useMotionValue(0);
         const rotateZ = useTransform(x, [-600, 600], [-360, +360]);
         const borderRadius = useTransform(x, [-600, 600], [0, 100]);
@@ -73,3 +73,53 @@
                 <Box style={{ x, rotateZ, borderRadius, scale }} drag="x" dragSnapToOrigin />
             </Wrapper>
         );
+
+    ## AnimatePresence 
+		AnimatePresence should locate outside of the children 
+			<AnimatePresence>{showing ? <Box /> : null}</AnimatePresence>
+		state of AnimatePresence : initial, animate, "exit"
+
+		custom and I love it!
+			const boxVariants = {
+				entry: (isBack: boolean) => ({
+					x: isBack ? -500 : 500,
+					opacity: 0,
+					scale: 0,
+				}),
+				center: {
+					x: 0,
+					opacity: 1,
+					scale: 1,
+					transition: { duration: 1 },
+				},
+				exit: (isBack: boolean) => ({
+					x: isBack ? 500 : -500,
+					opacity: 0,
+					scale: 0,
+					transition: { duration: 1 },
+				}),
+			};
+
+				const [isBack, setIsBack] = useState(false);
+				const nextPlease = () => {
+					setIsBack(false);
+					setVisible(prev => (prev === 10 ? 10 : prev + 1));
+				};
+				const prevPlease = () => {
+					setIsBack(true);
+					setVisible(prev => (prev === 1 ? 1 : prev - 1));
+				};
+
+				<AnimatePresence mode="wait" custom={isBack}>
+					<Box custom={isBack} variants={boxVariants} initial="entry" animate="center" exit="exit" key={visible}> ...
+
+        layout prop
+		    holy moly!!!!!
+		just put "layout" on the components gonna be changed by layout change
+
+		layoutId
+		    ??? What the heck is??
+		with same layoutId, framer-motion creates animation automatically between the components
+		<Box>{!clicked ? <Circle layoutId="circle" /> : null}</Box>
+		<Box>{clicked ? <Circle layoutId="circle" /> : null}</Box>
+*/

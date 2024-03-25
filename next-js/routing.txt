@@ -1,0 +1,80 @@
+# Defining Routes
+    app
+        page.tsx
+        layout.tsx <- Next.js created for you
+
+    how to add page in Next.js
+        root segment 
+            page.tsx
+    => Just express it using the file system
+    1. create a folder : to tell Next.JS this folder can potentially be a page
+    2. provide a UI component to render in the folder => page.tsx inside the directory
+
+    for visible page, create "page.tsx" file
+        without page.tsx, the directory is just a path 
+
+    can I put a file inside app folder? 
+        yes, cuz it will not be rendered
+        but you cannot access through URL without page.tsx
+
+# Not Found Routes
+    app / not-found.tsx
+        function name is not important but what matter is the name of file! "not-found.tsx"
+
+    usePathname only works in Client Components. Add the "use client" directive at the top of the file to use it.
+    ==> just add "use client"; at the top of the code!
+
+# SSR vs CSR
+    Client Side Rendering
+        normal React way
+        disadvantages of CSR
+            - what if the user is in the bad internet circumstances? => need to wait for the JS file to be downloaded
+            - SEO problems
+        there's a blink to wait for the JS
+            No html inside the HTML root
+        => Need JavaScript to see UI
+
+    Server Side Rendering 
+        React with frame works
+        don't need to download JavaScript file since it has html inside
+        "use client";
+        => will be SSR components first
+
+        All your components and pages will be rendered in backend first 
+            don't need to use React to build UI (Hydration)
+            rendering ? taking JS functions and turning into HTML that brower understands
+
+# Hydration
+    make dummy HTML turn into an React app 
+    hard navigation 
+        using anchor tag without JS\
+        need to reload the whole page
+    
+    react has benn hydrated?
+        bunch of anchors turned into React
+
+    a dummy HTML with some UI
+    immediately after framework starts to load - react, components
+    application becomes a React app
+    becomes interactive
+    and we can do client side rendering
+
+    /about-us --> Boring HTML --> :) ---> init(Boring HTML) 
+    /about-us ---> <button>0</button> ---> :) ---> <button onClick
+
+# "use Client"
+    hydration part doesn't happen on some components
+        only components becomes interactive are those have "use client" directive on the top
+    components don't need to be interactive will not be hydrated with no "use client" directive
+
+    "use client"; means ...
+        rendered in backend 
+        and hydrated in frontend
+
+    everything without "use client" will be server components
+        user needs to download less JavaScript and app gets faster!
+
+    server components will bring huge differences when fetching data!
+
+        
+   
