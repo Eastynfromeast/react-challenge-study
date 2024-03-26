@@ -152,7 +152,7 @@
     how to do the same thing with react-router
     (movie)
       movies
-        [id] --> curly bracket !!
+        [id] --> square bracket !!
           page.tsx
 
     export default function MovieDetail(props) {
