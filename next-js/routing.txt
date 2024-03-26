@@ -168,5 +168,12 @@
       return <h1>Movie {id}</h1>;
     }
 
+ # Quiz
+    questions which made me confused
+    1. SSR does not happen for client components? False
+    2. meaning of "a compoent to be hydrated" ? Hydrated component is rendered by React in the browser and server
+    3. "use client"; means that the component will only be rendered in the client? False
+ 
+
         
    
