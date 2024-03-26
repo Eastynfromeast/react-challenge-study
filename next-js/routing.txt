@@ -76,5 +76,97 @@
 
     server components will bring huge differences when fetching data!
 
+# Recap
+    How Next.js render our application
+		1. pre-render everything of our app on the backend FIRST (every components!)
+		2. take all the components and turn it into boring HTML
+		3. give non-interactive HTML to users after the user arrived our website
+		4. initializing frame work and React JS
+		5. Components that have "use client" will be hydrated == become interactive
+			every component used to be hydrated on former Next.js
+
+    use client directive
+        tells Next.js the component will be hydrated
+        means "also" rendered on the client side
+
+    benefit of hydration?
+        user needs to download "less"(tiny) JS code
+
+    Can I have a client component inside a server component?
+        Of course!
+
+
+# layout : wrap the pages around
+	  How it works?
+      Next.js is first going to the layout components and rendering layout components
+      What actually Next.js is rendering is...
+        <Layout>
+          <AboutUs />
+        </Layout>
+          {children} is a react thing 
+
+      Everytime you change the page,
+        Next.js renders layout
+        and the page you want to go, gets put in the children prop of layout component
+
+      Special thing of layout 
+        we can make another layout file inside a directory
+        layouts do not cancle each other == layout can be nested
+          <Layout>
+            <AboutUsLayout>
+              <SalesLayout>
+                <Sales/>
+              </SalesLayout>
+            </AboutUsLayout>
+          </Layout>
+
+    in the app directory
+    general for all the page
+      layout.tsx - uses for any folder
+      not-found.tsx
+      page.tsx
+
+      route groups need to be (nameOfTheGroup)
+        (home)
+          page.tsx
+
+          with (), Next.js does not create URL
+            invisible for frame work
+
+# meta-data
+    will be show up in the head of HTML
+    is "merged"
+    only page or layout can export meta data
+    meta data should be inside the server component
+
+    template of meta data
+      export const metadata: Metadata = {
+        title: {
+          template: "%s | Next Movies",
+          default: "Loading...",
+        },
+        description: "The best movies on the best framework",
+      };
+
+#dynamic route
+    how to do the same thing with react-router
+    (movie)
+      movies
+        [id] --> curly bracket !!
+          page.tsx
+
+    export default function MovieDetail(props) {
+      console.log(props); --> this JS executed in the backend!
+      // { params: { id: '1223' }, searchParams: {region:'kr'} }
+      return <h1>Movie</h1>;
+    }
+
+    export default function MovieDetail({ 
+      params: { id } }: { 
+        params: { id: string } 
+      }) {
+      return <h1>Movie {id}</h1>;
+    }
+
         
    
