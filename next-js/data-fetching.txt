@@ -1,0 +1,66 @@
+# Client Side
+    how to fetch data without any library or package
+		fetching happens in the client
+		& cannot have meta data on the client component :/
+		the fetching call reveals on the network tap of developer tool, so we cannot use api key!
+		usually React app communicate with a server with API
+		You have to handle loading state by yourself 
+
+		fetching from the server component === you don't have to use useEffect, useState, care about loading state
+
+# Server Side
+    In the server component
+			why async ? because we are using await
+			parent function should be an async function !!!
+
+		when you are using server component, it will cashe the fetched response automatically!
+			our backend is fetching url
+				this means the fetch function is completely safe from others!
+			loading state is still exist 
+				why it doesn't disapper yet? Because the API response can be slow
+				but it is loaded super fast because Next.js is casheing it!
+
+
+# Loading Components
+    it is important to make UI visible while loading state
+			the API response will take a long time then user will not see anything 
+			=> we need to set loading component
+			create a "loading.tsx" inside the same directory with the page component
+			backend is streaming a content loading to page!!!
+				Next.js is sending small pieces of website slowly until get the response
+
+		why this HomePage function needs to be asynchronus?
+			because Next.js is "awaiting" the component
+
+			<Loading/>
+			const html = await HomePage()
+			isLoading ? <Loading /> : html
+
+			frame work chops our app into small html pieces 
+			and show these pieces piece by piece continuously 
+			then when the data response is fully fetched, frame work sends the new component fetched
+
+# Parallel Requests
+    fetching parallel
+    const [movie, videos] = await Promise.all([getMovie(id), getVideos(id)]);
+
+# Suspense
+    better than former parallel fetching
+
+    how we can isolate those fetch functions
+        create an individual async funcition components
+        and put those in a page under Suspense
+            page function needs to be an async function still!
+        Suspense await for the component inside of it
+        until children is not ready, Suspense will show fallback
+        When the component is ready, Suspense will show the component!!!!
+
+# Recap
+
+
+# Error Handling
+    create error.tsx next to a page
+        this error file only protects the page inside same directory
+
+
+# Conclusions
