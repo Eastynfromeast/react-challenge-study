@@ -28,8 +28,22 @@
         };
     }
 
+    calling API twice is not a bad idea for next.js ver.14
+    since the request is cached
+
+    params id is an object given to page component
+
 
 #Deployment
+    connet Vercel with your own github
+    and push your local repo as a usual github push
+    
+    prefetch
+        pre-fetch some data which can be opened later
+        Movie.tsx
+        <Link prefetch href={`/movies/${id}`}>
+				{title}
+        </Link>
 
 
 node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node
