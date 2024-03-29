@@ -1,0 +1,35 @@
+# CSS Modules
+    doesn't take any configuration
+    global style? just put global.css on the root layout file
+        import "../styles/global.css";
+        put general styles for general tag without classes
+
+    Option 1
+        name.module.css
+        import module.css file as if it is a js file!
+        put only selective class styles == has to use class name
+            Selector "ul" is not pure (pure selectors must contain at least one local class or id)
+
+
+# Movie Styles
+
+
+# Movie Trailers
+
+
+# Dynamic Metadata
+    you can create dynamic metadata for [id] pages by creating a function 
+    /(movie)/movies/[id]/page.tsx
+    
+    export async function generateMetadata({ params: { id } }: IParams) {
+        const movie = await getMovie(id);
+        return {
+            title: movie.title,
+        };
+    }
+
+
+#Deployment
+
+
+node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node
