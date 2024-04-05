@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <link href="./tailwind-ouptput.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>3screens challenge</title>
     <style type="text/tailwindcss">
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
 
         @layer components {
             .wrapper {
@@ -25,7 +28,7 @@
                 @apply absolute bg-black w-[55%] h-10 top-2 left-[50%] -translate-x-[50%] -translate-y-[50%] rounded-xl;
             }
             .roundBtn {
-                @apply flex justify-center items-center border-black border-2 border-b-[5px] rounded-full  hover:bg-green-500 hover:text-white hover:border-gray-200 transition;
+                @apply flex justify-center items-center border-black border-2 border-b-[5px] rounded-full  hover:bg-green-500 hover:shadow-inner transition;
             }
         }
 
@@ -38,6 +41,9 @@
           }
         }
 
+        *{
+            font-family: "Ubuntu", sans-serif;
+        }
        
     </style>
 </head>
@@ -50,13 +56,13 @@
                 <h1 class="font-black text-4xl  mt-3 mb-5">Weather</h1>
                 <ul
                     class="flex flex-col space-y-6 w-full *:w-full *:flex *:items-center *:justify-between *:border-black *:border-2 *:border-b-[6px] *:px-5 *:py-4 *:rounded-2xl *:transition-all">
-                    <li class="hover:bg-blue-30 hover:bg-blue-300 hover:border-gray-200 hover:text-white *:flex">
+                    <li class="hover:bg-blue-300 hover:border-blue-700 hover:text-white *:flex">
                         <div class="flex-col gap-1">
                             <h4 class="text-2xl font-bold">Casius</h4>
                             <p class="text-sm font-semibold">Mars, 12AM</p>
                         </div>
                         <div class="gap-3">
-                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="size-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M14,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,14,24ZM6,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,6,24Zm12-2a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,18,22Zm-8,0a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,10,22ZM2,18.328a1,1,0,0,1-.777-.371A5.532,5.532,0,0,1,1.8,10.43a1,1,0,0,0,.345-.9,8.147,8.147,0,0,1-.033-2.889A7.945,7.945,0,0,1,8.5.138a8.052,8.052,0,0,1,8.734,4.438,1.039,1.039,0,0,0,.743.57A7.55,7.55,0,0,1,22.846,16.5a1,1,0,0,1-1.692-1.068,5.537,5.537,0,0,0-3.571-8.325,3.009,3.009,0,0,1-2.158-1.672A6,6,0,0,0,4.086,6.967a6.136,6.136,0,0,0,.024,2.18,3,3,0,0,1-.964,2.763A3.518,3.518,0,0,0,2.777,16.7,1,1,0,0,1,2,18.328Z" />
                             </svg>
@@ -64,13 +70,13 @@
                         </div>
                     </li>
                     <li
-                        class="bg-yellow-400 hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        class="bg-yellow-400 hover:bg-blue-300 hover:border-blue-700 hover:text-white transition-all *:flex">
                         <div class="flex-col gap-1">
                             <h4 class="text-2xl font-bold">Dlacria</h4>
                             <p class="text-sm font-semibold">Mars, 12AM</p>
                         </div>
                         <div class="gap-3">
-                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="size-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M14,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,14,24ZM6,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,6,24Zm12-2a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,18,22Zm-8,0a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,10,22ZM2,18.328a1,1,0,0,1-.777-.371A5.532,5.532,0,0,1,1.8,10.43a1,1,0,0,0,.345-.9,8.147,8.147,0,0,1-.033-2.889A7.945,7.945,0,0,1,8.5.138a8.052,8.052,0,0,1,8.734,4.438,1.039,1.039,0,0,0,.743.57A7.55,7.55,0,0,1,22.846,16.5a1,1,0,0,1-1.692-1.068,5.537,5.537,0,0,0-3.571-8.325,3.009,3.009,0,0,1-2.158-1.672A6,6,0,0,0,4.086,6.967a6.136,6.136,0,0,0,.024,2.18,3,3,0,0,1-.964,2.763A3.518,3.518,0,0,0,2.777,16.7,1,1,0,0,1,2,18.328Z" />
                             </svg>
@@ -78,13 +84,13 @@
                         </div>
                     </li>
                     <li
-                        class="bg-teal-500 hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        class="bg-teal-500 hover:bg-blue-300 hover:border-blue-700 hover:text-white transition-all *:flex">
                         <div class="flex-col gap-1">
                             <h4 class="text-2xl font-bold">New York</h4>
                             <p class="text-sm font-semibold">USA, 12AM</p>
                         </div>
                         <div class="gap-3">
-                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="size-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M23,11H18.92a6.924,6.924,0,0,0-.429-1.607l3.527-2.044a1,1,0,1,0-1-1.731l-3.53,2.047a7.062,7.062,0,0,0-1.149-1.15l2.046-3.531a1,1,0,0,0-1.731-1L14.607,5.509A6.9,6.9,0,0,0,13,5.08V1a1,1,0,0,0-2,0V5.08a6.9,6.9,0,0,0-1.607.429L7.349,1.982a1,1,0,0,0-1.731,1L7.664,6.515a7.062,7.062,0,0,0-1.149,1.15L2.985,5.618a1,1,0,1,0-1,1.731L5.509,9.393A6.924,6.924,0,0,0,5.08,11H1a1,1,0,0,0,0,2H5.08a6.924,6.924,0,0,0,.429,1.607L1.982,16.651a1,1,0,1,0,1,1.731l3.53-2.047a7.062,7.062,0,0,0,1.149,1.15L5.618,21.016a1,1,0,0,0,1.731,1l2.044-3.527A6.947,6.947,0,0,0,11,18.92V23a1,1,0,0,0,2,0V18.92a6.947,6.947,0,0,0,1.607-.429l2.044,3.527a1,1,0,0,0,1.731-1l-2.046-3.531a7.062,7.062,0,0,0,1.149-1.15l3.53,2.047a1,1,0,1,0,1-1.731l-3.527-2.044A6.924,6.924,0,0,0,18.92,13H23A1,1,0,0,0,23,11ZM12,17c-6.608-.21-6.606-9.791,0-10C18.608,7.21,18.606,16.791,12,17Z" />
                             </svg>
@@ -92,7 +98,7 @@
                         </div>
                     </li>
                     <li
-                        class="bg-orange-600 text-white hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        class="bg-orange-600 text-white hover:bg-blue-300 hover:border-blue-700 hover:text-white transition-all *:flex">
                         <div class="flex-col gap-1">
                             <h4 class="text-2xl font-bold">Zomato</h4>
                             <p class="text-sm font-semibold">India, 12AM</p>
@@ -107,9 +113,10 @@
                     </li>
                 </ul>
                 <div class="overflow-hidden mx-auto mt-10">
-                    <a class="roundBtn size-14 px-3" href="#none">
-                        <svg class=" xmlns=" http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1" viewBox="0 0 512 512" xml:space="preserve" width="24" height="24">
+                    <a class="roundBtn size-14 group" href="#none">
+                        <svg class="fill-current group-hover:scale-75" xmlns=" http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 512 512"
+                            xml:space="preserve" width="24" height="24">
                             <path class="stroke-2"
                                 d="M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
 
@@ -134,7 +141,7 @@
                 <h1 class="font-extrabold text-3xl text-center m-3">Work with best designers</h1>
                 <ul
                     class="grid grid-cols-2 gap-4 w-full py-3 *:inline-flex *:items-center *:justify-center *:border-black *:border-2  *:rounded-xl *:min-h-[180px] *:text-white *:relative *:p-10">
-                    <li class=" bg-yellow-400 group">
+                    <li class=" bg-yellow-400 group hover:contrast-125 hover:border-4">
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
                             height="40">
                             <path
@@ -145,7 +152,7 @@
                             design by.Nulnu A
                         </span>
                     </li>
-                    <li class=" bg-teal-500 group">
+                    <li class=" bg-teal-500 group hover:contrast-125 hover:border-4">
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
                             height="40">
                             <path
@@ -156,7 +163,7 @@
                             design by.Nulnu B
                         </span>
                     </li>
-                    <li class=" bg-pink-400 group">
+                    <li class=" bg-pink-400 group hover:contrast-125 hover:border-4">
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
                             height="40">
                             <path
@@ -167,7 +174,7 @@
                             design by.Nulnu C
                         </span>
                     </li>
-                    <li class=" bg-orange-500 group">
+                    <li class=" bg-orange-500 group hover:contrast-125 hover:border-4">
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
                             height="40">
                             <path
@@ -189,9 +196,8 @@
             <div class="screen bg-yellow-400">
                 <span class="notch"></span>
                 <div class="mt-4 mb-2 relative">
-                    <a class="roundBtn bg-white size-12 p-1 hover:bg-orange-500 hover:border-black hover:text-black group absolute top-0 left-0"
-                        href="#none">
-                        <svg class="fill-none stroke-2 w-7 group-hover:scale-125 transition-all" dataSlot="icon"
+                    <a class="roundBtn bg-white size-12 p-1 group absolute top-0 left-0" href="#none">
+                        <svg class="fill-none stroke-2 w-7 group-hover:scale-75 transition-all" dataSlot="icon"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -201,7 +207,7 @@
                 </div>
                 <div class="w-full relative">
                     <input
-                        class="w-full h-14 my-5 rounded-xl border-black border-2 border-b-[6px] px-3 placeholder:text-gray-500 placeholder:font-medium placeholder:text-lg ring ring-transparent focus:ring-orange-500 focus:ring-inset focus:outline-none transition-all"
+                        class="w-full h-14 my-5 rounded-xl border-black border-2 border-b-[6px] px-3 placeholder:text-gray-500  placeholder:text-lg ring ring-transparent focus:ring-orange-500 focus:ring-inset focus:outline-none transition-all"
                         type="text" placeholder="Search with love❤️" />
                     <button class="absolute block top-[50%] right-0 -translate-x-[50%] -translate-y-[50%] size-6">
                         <svg class="fill-none stroke-2 " dataSlot="icon" fill="none" stroke="currentColor"
@@ -212,17 +218,73 @@
                     </button>
                 </div>
                 <ul
-                    class="flex flex-col gap-4 w-full py-3 *:flex *:items-center *:justify-between *:border-black *:border-2  *:rounded-xl *:relative *:p-3">
-                    <li class="bg-white">
-                        <div class="size-14 border-2 border-black rounded-full">
-                            <img src="" alt="" />
+                    class="flex flex-col gap-4 w-full py-3 *:flex *:items-center *:justify-between *:border-black *:border-2  *:rounded-xl *:relative *:p-3 *:transition-all *:bg-white">
+                    <li class="*:flex hover:bg-blue-300 hover:border-blue-700 hover:text-white ">
+                        <div class="space-x-3">
+                            <img class="size-14 border-2 border-black rounded-full"
+                                src="https://cdn.jsdelivr.net/gh/Eastynfromeast/react-challenge-study/src/images/img_nurinu_240405_0.jpg"
+                                alt="nurinu1" />
+                            <div class="flex flex-col justify-center">
+                                <h4 class="text-xl font-bold">NuriNu A</h4>
+                                <p class="text-sm">Pro Promenader</p>
+                            </div>
                         </div>
-                        <div>
-                        </div>
-                        <div>
-                            <button>Invite</button>
-                        </div>
+                        <button
+                            class="py-1 px-4 rounded-lg bg-yellow-400 text-xs text-black font-bold border-black border-2 border-b-4 hover:bg-green-400 hover:shadow-inner transition-all">Invite</button>
                     </li>
+                    <li class="*:flex *:justify-center hover:bg-blue-300 hover:border-blue-700 hover:text-white ">
+                        <div class="space-x-3">
+                            <img class="size-14 border-2 border-black rounded-full"
+                                src="https://cdn.jsdelivr.net/gh/Eastynfromeast/react-challenge-study/src/images/img_nurinu_240405_1.jpg"
+                                alt="nurinu1" />
+                            <div class="flex flex-col justify-center">
+                                <h4 class="text-xl font-bold">NuriNu B</h4>
+                                <p class="text-sm">Just showerd</p>
+                            </div>
+                        </div>
+                        <button
+                            class="py-1 px-4 rounded-lg bg-yellow-400 text-xs text-black font-bold border-black border-2 border-b-4 hover:bg-green-400 hover:shadow-inner transition-all">Invite</button>
+                    </li>
+                    <li class="*:flex hover:bg-blue-300 hover:border-blue-700 hover:text-white ">
+                        <div class="space-x-3">
+                            <img class="size-14 border-2 border-black rounded-full"
+                                src="https://cdn.jsdelivr.net/gh/Eastynfromeast/react-challenge-study/src/images/img_nurinu_240405_2.jpg"
+                                alt="nurinu1" />
+                            <div class="flex flex-col justify-center">
+                                <h4 class="text-xl font-bold">NuriNu C</h4>
+                                <p class="text-sm">Just woke up</p>
+                            </div>
+                        </div>
+                        <button
+                            class="py-1 px-4 rounded-lg bg-black text-xs text-white font-bold border-black border-2 border-b-4 transition-all">Invited</button>
+                    </li>
+                    <li class="*:flex hover:bg-blue-300 hover:border-blue-700 hover:text-white ">
+                        <div class="space-x-3">
+                            <img class="size-14 border-2 border-black rounded-full"
+                                src="https://cdn.jsdelivr.net/gh/Eastynfromeast/react-challenge-study/src/images/img_nurinu_240405_4.jpg"
+                                alt="nurinu1" />
+                            <div class="flex flex-col justify-center">
+                                <h4 class="text-xl font-bold">NuriNu D</h4>
+                                <p class="text-sm">Laughing Artirst</p>
+                            </div>
+                        </div>
+                        <button
+                            class="py-1 px-4 rounded-lg bg-yellow-400 text-xs text-black font-bold border-black border-2 border-b-4 hover:bg-green-400 hover:shadow-inner transition-all">Invite</button>
+                    </li>
+                    <li class="*:flex hover:bg-blue-300 hover:border-blue-700 hover:text-white ">
+                        <div class="space-x-3">
+                            <img class="size-14 border-2 border-black rounded-full"
+                                src="https://cdn.jsdelivr.net/gh/Eastynfromeast/react-challenge-study/src/images/img_nurinu_240405_3.jpg"
+                                alt="nurinu1" />
+                            <div class="flex flex-col justify-center">
+                                <h4 class="text-xl font-bold">NuriNu E</h4>
+                                <p class="text-sm">Coding Hater</p>
+                            </div>
+                        </div>
+                        <button disabled
+                            class="py-1 px-4 rounded-lg bg-yellow-400 text-xs text-black font-bold border-black border-2 border-b-4 hover:bg-green-400 hover:shadow-inner transition-all disabled:bg-gray-200 disabled:text-neutral-400">Blocked</button>
+                    </li>
+
                 </ul>
 
             </div>
