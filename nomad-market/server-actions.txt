@@ -1,0 +1,44 @@
+how to create API Route 
+    used on past versions...
+    fetch(API_URL)
+    post --> /api/login == api route
+    doesn't render any UI
+    it's for client
+
+    route.ts 
+        different with page.tsx
+        => telling next.js this is an api route
+        route does not render UI!!!
+        function name should be "GET"
+    
+    // ..app/www/users/route.ts
+    import { NextRequest } from "next/server";
+
+    export async function GET(request: NextRequest) {
+        console.log(request);
+        return Response.json({
+            ok: true,
+        });
+    }
+
+    POST request
+        need to read request's body
+    
+    // ..app/www/users/route.ts
+    export async function POST(request: NextRequest) {
+        const data = await request.json();
+        console.log("log the user in!!");
+        return Response.json(data);
+    }
+
+    // app/login.page.tsx
+    const onClick = async () => {
+        const response = await fetch("/www/users", {
+            method: "POST",
+            body: JSON.stringify({
+                username: "nuri",
+                pasword: "1022",
+            }),
+        });
+        console.log(await response.json());
+    };

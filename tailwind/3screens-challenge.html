@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./tailwind-ouptput.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>3screens challenge</title>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+        @layer components {
+            .wrapper {
+                @apply min-h-screen min-w-full w-fit overflow-x-auto bg-red-50 py-10 flex justify-evenly items-center gap-5 ;
+            }
+            .screenSection {
+                @apply bg-black w-[390px] h-[820px] px-4 py-4 rounded-[60px] flex justify-center overflow-y-auto; 
+            }
+            .screen {
+                @apply w-full h-full bg-white rounded-[45px] flex flex-col px-4 pt-10 relative
+            }
+            .notch {
+                @apply absolute bg-black w-[55%] h-10 top-2 left-[50%] -translate-x-[50%] -translate-y-[50%] rounded-xl;
+            }
+            .roundBtn {
+                @apply flex justify-center items-center border-black border-2 border-b-[5px] rounded-full  hover:bg-green-500 hover:text-white hover:border-gray-200 transition;
+            }
+        }
+
+        @layer base {
+          @font-face {
+            font-family:"Ubuntu", sans-serif;
+            font-display: swap;
+            font-style: normal;
+            src:url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap') format("woff");
+          }
+        }
+
+       
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="screenSection">
+            <div class="screen">
+                <span class="notch"></span>
+                <h1 class="font-black text-4xl  mt-3 mb-5">Weather</h1>
+                <ul
+                    class="flex flex-col space-y-6 w-full *:w-full *:flex *:items-center *:justify-between *:border-black *:border-2 *:border-b-[6px] *:px-5 *:py-4 *:rounded-2xl *:transition-all">
+                    <li class="hover:bg-blue-30 hover:bg-blue-300 hover:border-gray-200 hover:text-white *:flex">
+                        <div class="flex-col gap-1">
+                            <h4 class="text-2xl font-bold">Casius</h4>
+                            <p class="text-sm font-semibold">Mars, 12AM</p>
+                        </div>
+                        <div class="gap-3">
+                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M14,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,14,24ZM6,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,6,24Zm12-2a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,18,22Zm-8,0a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,10,22ZM2,18.328a1,1,0,0,1-.777-.371A5.532,5.532,0,0,1,1.8,10.43a1,1,0,0,0,.345-.9,8.147,8.147,0,0,1-.033-2.889A7.945,7.945,0,0,1,8.5.138a8.052,8.052,0,0,1,8.734,4.438,1.039,1.039,0,0,0,.743.57A7.55,7.55,0,0,1,22.846,16.5a1,1,0,0,1-1.692-1.068,5.537,5.537,0,0,0-3.571-8.325,3.009,3.009,0,0,1-2.158-1.672A6,6,0,0,0,4.086,6.967a6.136,6.136,0,0,0,.024,2.18,3,3,0,0,1-.964,2.763A3.518,3.518,0,0,0,2.777,16.7,1,1,0,0,1,2,18.328Z" />
+                            </svg>
+                            <span class="inline-block text-4xl font-extrabold">85º</span>
+                        </div>
+                    </li>
+                    <li
+                        class="bg-yellow-400 hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        <div class="flex-col gap-1">
+                            <h4 class="text-2xl font-bold">Dlacria</h4>
+                            <p class="text-sm font-semibold">Mars, 12AM</p>
+                        </div>
+                        <div class="gap-3">
+                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M14,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,14,24ZM6,24a1,1,0,0,1-1-1V18a1,1,0,0,1,2,0v5A1,1,0,0,1,6,24Zm12-2a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,18,22Zm-8,0a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v5A1,1,0,0,1,10,22ZM2,18.328a1,1,0,0,1-.777-.371A5.532,5.532,0,0,1,1.8,10.43a1,1,0,0,0,.345-.9,8.147,8.147,0,0,1-.033-2.889A7.945,7.945,0,0,1,8.5.138a8.052,8.052,0,0,1,8.734,4.438,1.039,1.039,0,0,0,.743.57A7.55,7.55,0,0,1,22.846,16.5a1,1,0,0,1-1.692-1.068,5.537,5.537,0,0,0-3.571-8.325,3.009,3.009,0,0,1-2.158-1.672A6,6,0,0,0,4.086,6.967a6.136,6.136,0,0,0,.024,2.18,3,3,0,0,1-.964,2.763A3.518,3.518,0,0,0,2.777,16.7,1,1,0,0,1,2,18.328Z" />
+                            </svg>
+                            <span class="inline-block text-4xl font-extrabold">85º</span>
+                        </div>
+                    </li>
+                    <li
+                        class="bg-teal-500 hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        <div class="flex-col gap-1">
+                            <h4 class="text-2xl font-bold">New York</h4>
+                            <p class="text-sm font-semibold">USA, 12AM</p>
+                        </div>
+                        <div class="gap-3">
+                            <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M23,11H18.92a6.924,6.924,0,0,0-.429-1.607l3.527-2.044a1,1,0,1,0-1-1.731l-3.53,2.047a7.062,7.062,0,0,0-1.149-1.15l2.046-3.531a1,1,0,0,0-1.731-1L14.607,5.509A6.9,6.9,0,0,0,13,5.08V1a1,1,0,0,0-2,0V5.08a6.9,6.9,0,0,0-1.607.429L7.349,1.982a1,1,0,0,0-1.731,1L7.664,6.515a7.062,7.062,0,0,0-1.149,1.15L2.985,5.618a1,1,0,1,0-1,1.731L5.509,9.393A6.924,6.924,0,0,0,5.08,11H1a1,1,0,0,0,0,2H5.08a6.924,6.924,0,0,0,.429,1.607L1.982,16.651a1,1,0,1,0,1,1.731l3.53-2.047a7.062,7.062,0,0,0,1.149,1.15L5.618,21.016a1,1,0,0,0,1.731,1l2.044-3.527A6.947,6.947,0,0,0,11,18.92V23a1,1,0,0,0,2,0V18.92a6.947,6.947,0,0,0,1.607-.429l2.044,3.527a1,1,0,0,0,1.731-1l-2.046-3.531a7.062,7.062,0,0,0,1.149-1.15l3.53,2.047a1,1,0,1,0,1-1.731l-3.527-2.044A6.924,6.924,0,0,0,18.92,13H23A1,1,0,0,0,23,11ZM12,17c-6.608-.21-6.606-9.791,0-10C18.608,7.21,18.606,16.791,12,17Z" />
+                            </svg>
+                            <span class="inline-block text-4xl font-extrabold">85º</span>
+                        </div>
+                    </li>
+                    <li
+                        class="bg-orange-600 text-white hover:bg-blue-300 hover:border-gray-200 hover:text-white transition-all *:flex">
+                        <div class="flex-col gap-1">
+                            <h4 class="text-2xl font-bold">Zomato</h4>
+                            <p class="text-sm font-semibold">India, 12AM</p>
+                        </div>
+                        <div class="gap-3">
+                            <svg class="size-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M18,24a1,1,0,0,1-1-1V22a1,1,0,0,1,2,0v1A1,1,0,0,1,18,24Zm-6,0a1,1,0,0,1-1-1V22a1,1,0,0,1,2,0v1A1,1,0,0,1,12,24ZM6,24a1,1,0,0,1-1-1V22a1,1,0,0,1,2,0v1A1,1,0,0,1,6,24ZM5,19.973a1.032,1.032,0,0,1-.111-.006A5.526,5.526,0,0,1,1.8,10.43a1,1,0,0,0,.345-.9,8.147,8.147,0,0,1-.033-2.889A7.946,7.946,0,0,1,8.5.137a8.06,8.06,0,0,1,8.735,4.44,1.036,1.036,0,0,0,.742.569A7.5,7.5,0,0,1,19.4,19.39a1,1,0,0,1-.792-1.837A5.5,5.5,0,0,0,17.583,7.106a3.011,3.011,0,0,1-2.158-1.672A6,6,0,0,0,4.086,6.967,6.142,6.142,0,0,0,4.11,9.148a3.005,3.005,0,0,1-.964,2.762A3.522,3.522,0,0,0,5.11,17.979,1,1,0,0,1,5,19.973ZM15,18a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v1A1,1,0,0,1,15,18ZM9,18a1,1,0,0,1-1-1V16a1,1,0,0,1,2,0v1A1,1,0,0,1,9,18Z" />
+                            </svg>
+                            <span class="inline-block text-4xl font-extrabold">20º</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="overflow-hidden mx-auto mt-10">
+                    <a class="roundBtn size-14 px-3" href="#none">
+                        <svg class=" xmlns=" http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1" viewBox="0 0 512 512" xml:space="preserve" width="24" height="24">
+                            <path class="stroke-2"
+                                d="M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
+
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="screenSection">
+            <div class="screen">
+                <span class="notch"></span>
+                <div class="overflow-hidden mt-4 mb-2">
+                    <a class="roundBtn size-12 p-1 hover:bg-gray-300 group" href="#none">
+                        <svg class="stroke-2 group-hover:scale-75 transition-all" dataSlot="icon" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-center font-bold uppercase text-gray-600">Simple Tag</p>
+                <h1 class="font-extrabold text-3xl text-center m-3">Work with best designers</h1>
+                <ul
+                    class="grid grid-cols-2 gap-4 w-full py-3 *:inline-flex *:items-center *:justify-center *:border-black *:border-2  *:rounded-xl *:min-h-[180px] *:text-white *:relative *:p-10">
+                    <li class=" bg-yellow-400 group">
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
+                            height="40">
+                            <path
+                                d="M15,4.43c0,.2,.12,.39,.31,.47l2.66,1.12,1.07,2.66c.08,.19,.26,.31,.46,.31s.39-.12,.46-.31l1.06-2.66,2.66-1.06c.19-.08,.31-.26,.31-.46s-.12-.39-.31-.46l-2.66-1.06-1.06-2.66c-.15-.38-.78-.38-.93,0l-1.06,2.65-2.65,1c-.19,.07-.32,.25-.32,.46Zm3.53-.6c.13-.05,.23-.15,.29-.28l.68-1.7,.68,1.7c.05,.13,.15,.23,.28,.28l1.7,.68-1.7,.68c-.13,.05-.23,.15-.28,.28l-.68,1.7-.68-1.7c-.05-.12-.15-.22-.27-.28l-1.71-.72,1.69-.64Zm-4.02,5.66l-.53-2.11c-.06-.22-.26-.38-.48-.38s-.43,.16-.48,.38l-.53,2.1-2.1,.48c-.22,.05-.38,.25-.39,.48,0,.23,.15,.43,.37,.49l2.12,.57,.53,2.11c.06,.22,.26,.38,.48,.38s.43-.16,.48-.38l.53-2.11,2.11-.53c.22-.06,.38-.26,.38-.48s-.16-.43-.38-.48l-2.11-.53Zm-.53,1.13c-.18,.04-.32,.18-.36,.36l-.12,.46-.12-.46c-.04-.18-.18-.31-.35-.36l-.47-.13,.41-.09c.18-.04,.38-.23,.42-.42l.1-.42,.12,.46c.04,.18,.18,.32,.36,.36l.46,.12-.46,.12Zm9.52-2.62c-.28,0-.5,.22-.5,.5v11c0,.09,0,.19-.01,.28l-2.9-2.9c-1.15-1.15-3.02-1.15-4.17,0l-.58,.58c-.74,.74-1.94,.74-2.68,0l-5.58-5.58c-1.15-1.15-3.02-1.15-4.17,0l-1.92,1.92V4.5c0-1.93,1.57-3.5,3.5-3.5H15.5c.28,0,.5-.22,.5-.5s-.22-.5-.5-.5H4.5C2.02,0,0,2.02,0,4.5v15c0,2.48,2.02,4.5,4.5,4.5h15c2.48,0,4.5-2.02,4.5-4.5V8.5c0-.28-.22-.5-.5-.5Zm-4,15H4.5c-1.93,0-3.5-1.57-3.5-3.5v-4.29l2.62-2.62c.76-.76,2-.76,2.75,0l5.58,5.58c1.13,1.13,2.96,1.13,4.09,0l.58-.58c.76-.76,2-.76,2.75,0l3.33,3.33c-.54,1.23-1.77,2.09-3.2,2.09ZM7,5c.55,0,1,.45,1,1s-.45,1-1,1-1-.45-1-1,.45-1,1-1Z" />
+                        </svg>
+                        <span
+                            class="absolute bottom-1 right-2 text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all ">
+                            design by.Nulnu A
+                        </span>
+                    </li>
+                    <li class=" bg-teal-500 group">
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
+                            height="40">
+                            <path
+                                d="M15,4.43c0,.2,.12,.39,.31,.47l2.66,1.12,1.07,2.66c.08,.19,.26,.31,.46,.31s.39-.12,.46-.31l1.06-2.66,2.66-1.06c.19-.08,.31-.26,.31-.46s-.12-.39-.31-.46l-2.66-1.06-1.06-2.66c-.15-.38-.78-.38-.93,0l-1.06,2.65-2.65,1c-.19,.07-.32,.25-.32,.46Zm3.53-.6c.13-.05,.23-.15,.29-.28l.68-1.7,.68,1.7c.05,.13,.15,.23,.28,.28l1.7,.68-1.7,.68c-.13,.05-.23,.15-.28,.28l-.68,1.7-.68-1.7c-.05-.12-.15-.22-.27-.28l-1.71-.72,1.69-.64Zm-4.02,5.66l-.53-2.11c-.06-.22-.26-.38-.48-.38s-.43,.16-.48,.38l-.53,2.1-2.1,.48c-.22,.05-.38,.25-.39,.48,0,.23,.15,.43,.37,.49l2.12,.57,.53,2.11c.06,.22,.26,.38,.48,.38s.43-.16,.48-.38l.53-2.11,2.11-.53c.22-.06,.38-.26,.38-.48s-.16-.43-.38-.48l-2.11-.53Zm-.53,1.13c-.18,.04-.32,.18-.36,.36l-.12,.46-.12-.46c-.04-.18-.18-.31-.35-.36l-.47-.13,.41-.09c.18-.04,.38-.23,.42-.42l.1-.42,.12,.46c.04,.18,.18,.32,.36,.36l.46,.12-.46,.12Zm9.52-2.62c-.28,0-.5,.22-.5,.5v11c0,.09,0,.19-.01,.28l-2.9-2.9c-1.15-1.15-3.02-1.15-4.17,0l-.58,.58c-.74,.74-1.94,.74-2.68,0l-5.58-5.58c-1.15-1.15-3.02-1.15-4.17,0l-1.92,1.92V4.5c0-1.93,1.57-3.5,3.5-3.5H15.5c.28,0,.5-.22,.5-.5s-.22-.5-.5-.5H4.5C2.02,0,0,2.02,0,4.5v15c0,2.48,2.02,4.5,4.5,4.5h15c2.48,0,4.5-2.02,4.5-4.5V8.5c0-.28-.22-.5-.5-.5Zm-4,15H4.5c-1.93,0-3.5-1.57-3.5-3.5v-4.29l2.62-2.62c.76-.76,2-.76,2.75,0l5.58,5.58c1.13,1.13,2.96,1.13,4.09,0l.58-.58c.76-.76,2-.76,2.75,0l3.33,3.33c-.54,1.23-1.77,2.09-3.2,2.09ZM7,5c.55,0,1,.45,1,1s-.45,1-1,1-1-.45-1-1,.45-1,1-1Z" />
+                        </svg>
+                        <span
+                            class="absolute bottom-1 right-2 text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all ">
+                            design by.Nulnu B
+                        </span>
+                    </li>
+                    <li class=" bg-pink-400 group">
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
+                            height="40">
+                            <path
+                                d="M15,4.43c0,.2,.12,.39,.31,.47l2.66,1.12,1.07,2.66c.08,.19,.26,.31,.46,.31s.39-.12,.46-.31l1.06-2.66,2.66-1.06c.19-.08,.31-.26,.31-.46s-.12-.39-.31-.46l-2.66-1.06-1.06-2.66c-.15-.38-.78-.38-.93,0l-1.06,2.65-2.65,1c-.19,.07-.32,.25-.32,.46Zm3.53-.6c.13-.05,.23-.15,.29-.28l.68-1.7,.68,1.7c.05,.13,.15,.23,.28,.28l1.7,.68-1.7,.68c-.13,.05-.23,.15-.28,.28l-.68,1.7-.68-1.7c-.05-.12-.15-.22-.27-.28l-1.71-.72,1.69-.64Zm-4.02,5.66l-.53-2.11c-.06-.22-.26-.38-.48-.38s-.43,.16-.48,.38l-.53,2.1-2.1,.48c-.22,.05-.38,.25-.39,.48,0,.23,.15,.43,.37,.49l2.12,.57,.53,2.11c.06,.22,.26,.38,.48,.38s.43-.16,.48-.38l.53-2.11,2.11-.53c.22-.06,.38-.26,.38-.48s-.16-.43-.38-.48l-2.11-.53Zm-.53,1.13c-.18,.04-.32,.18-.36,.36l-.12,.46-.12-.46c-.04-.18-.18-.31-.35-.36l-.47-.13,.41-.09c.18-.04,.38-.23,.42-.42l.1-.42,.12,.46c.04,.18,.18,.32,.36,.36l.46,.12-.46,.12Zm9.52-2.62c-.28,0-.5,.22-.5,.5v11c0,.09,0,.19-.01,.28l-2.9-2.9c-1.15-1.15-3.02-1.15-4.17,0l-.58,.58c-.74,.74-1.94,.74-2.68,0l-5.58-5.58c-1.15-1.15-3.02-1.15-4.17,0l-1.92,1.92V4.5c0-1.93,1.57-3.5,3.5-3.5H15.5c.28,0,.5-.22,.5-.5s-.22-.5-.5-.5H4.5C2.02,0,0,2.02,0,4.5v15c0,2.48,2.02,4.5,4.5,4.5h15c2.48,0,4.5-2.02,4.5-4.5V8.5c0-.28-.22-.5-.5-.5Zm-4,15H4.5c-1.93,0-3.5-1.57-3.5-3.5v-4.29l2.62-2.62c.76-.76,2-.76,2.75,0l5.58,5.58c1.13,1.13,2.96,1.13,4.09,0l.58-.58c.76-.76,2-.76,2.75,0l3.33,3.33c-.54,1.23-1.77,2.09-3.2,2.09ZM7,5c.55,0,1,.45,1,1s-.45,1-1,1-1-.45-1-1,.45-1,1-1Z" />
+                        </svg>
+                        <span
+                            class="absolute bottom-1 right-2 text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all ">
+                            design by.Nulnu C
+                        </span>
+                    </li>
+                    <li class=" bg-orange-500 group">
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40"
+                            height="40">
+                            <path
+                                d="M15,4.43c0,.2,.12,.39,.31,.47l2.66,1.12,1.07,2.66c.08,.19,.26,.31,.46,.31s.39-.12,.46-.31l1.06-2.66,2.66-1.06c.19-.08,.31-.26,.31-.46s-.12-.39-.31-.46l-2.66-1.06-1.06-2.66c-.15-.38-.78-.38-.93,0l-1.06,2.65-2.65,1c-.19,.07-.32,.25-.32,.46Zm3.53-.6c.13-.05,.23-.15,.29-.28l.68-1.7,.68,1.7c.05,.13,.15,.23,.28,.28l1.7,.68-1.7,.68c-.13,.05-.23,.15-.28,.28l-.68,1.7-.68-1.7c-.05-.12-.15-.22-.27-.28l-1.71-.72,1.69-.64Zm-4.02,5.66l-.53-2.11c-.06-.22-.26-.38-.48-.38s-.43,.16-.48,.38l-.53,2.1-2.1,.48c-.22,.05-.38,.25-.39,.48,0,.23,.15,.43,.37,.49l2.12,.57,.53,2.11c.06,.22,.26,.38,.48,.38s.43-.16,.48-.38l.53-2.11,2.11-.53c.22-.06,.38-.26,.38-.48s-.16-.43-.38-.48l-2.11-.53Zm-.53,1.13c-.18,.04-.32,.18-.36,.36l-.12,.46-.12-.46c-.04-.18-.18-.31-.35-.36l-.47-.13,.41-.09c.18-.04,.38-.23,.42-.42l.1-.42,.12,.46c.04,.18,.18,.32,.36,.36l.46,.12-.46,.12Zm9.52-2.62c-.28,0-.5,.22-.5,.5v11c0,.09,0,.19-.01,.28l-2.9-2.9c-1.15-1.15-3.02-1.15-4.17,0l-.58,.58c-.74,.74-1.94,.74-2.68,0l-5.58-5.58c-1.15-1.15-3.02-1.15-4.17,0l-1.92,1.92V4.5c0-1.93,1.57-3.5,3.5-3.5H15.5c.28,0,.5-.22,.5-.5s-.22-.5-.5-.5H4.5C2.02,0,0,2.02,0,4.5v15c0,2.48,2.02,4.5,4.5,4.5h15c2.48,0,4.5-2.02,4.5-4.5V8.5c0-.28-.22-.5-.5-.5Zm-4,15H4.5c-1.93,0-3.5-1.57-3.5-3.5v-4.29l2.62-2.62c.76-.76,2-.76,2.75,0l5.58,5.58c1.13,1.13,2.96,1.13,4.09,0l.58-.58c.76-.76,2-.76,2.75,0l3.33,3.33c-.54,1.23-1.77,2.09-3.2,2.09ZM7,5c.55,0,1,.45,1,1s-.45,1-1,1-1-.45-1-1,.45-1,1-1Z" />
+                        </svg>
+                        <span
+                            class="absolute bottom-1 right-2 text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all ">
+                            design by.Nulnu D
+                        </span>
+                    </li>
+                </ul>
+                <button
+                    class="w-full h-[3.25rem] mt-8 rounded-xl leading-[3.25rem] text-white font-extrabold text-lg bg-blue-700 hover:text-blue-700 hover:bg-gray-300 transition-all group">
+                    <span class="block group-hover:animate-pulse transition-all">Let's get it done</span>
+                </button>
+            </div>
+        </section>
+        <section class="screenSection">
+            <div class="screen bg-yellow-400">
+                <span class="notch"></span>
+                <div class="mt-4 mb-2 relative">
+                    <a class="roundBtn bg-white size-12 p-1 hover:bg-orange-500 hover:border-black hover:text-black group absolute top-0 left-0"
+                        href="#none">
+                        <svg class="fill-none stroke-2 w-7 group-hover:scale-125 transition-all" dataSlot="icon"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </a>
+                    <h1 class="font-extrabold text-2xl text-center pt-2">Friends</h1>
+                </div>
+                <div class="w-full relative">
+                    <input
+                        class="w-full h-14 my-5 rounded-xl border-black border-2 border-b-[6px] px-3 placeholder:text-gray-500 placeholder:font-medium placeholder:text-lg ring ring-transparent focus:ring-orange-500 focus:ring-inset focus:outline-none transition-all"
+                        type="text" placeholder="Search with love❤️" />
+                    <button class="absolute block top-[50%] right-0 -translate-x-[50%] -translate-y-[50%] size-6">
+                        <svg class="fill-none stroke-2 " dataSlot="icon" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
+                </div>
+                <ul
+                    class="flex flex-col gap-4 w-full py-3 *:flex *:items-center *:justify-between *:border-black *:border-2  *:rounded-xl *:relative *:p-3">
+                    <li class="bg-white">
+                        <div class="size-14 border-2 border-black rounded-full">
+                            <img src="" alt="" />
+                        </div>
+                        <div>
+                        </div>
+                        <div>
+                            <button>Invite</button>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

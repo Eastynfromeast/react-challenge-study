@@ -1,0 +1,11 @@
+# Create account screen
+    heroicons
+
+    typescript will turn your path into "@components/blahblah"
+    tsconfig.json   
+    "paths": {
+        "@/*": ["./*"]
+    }
+    but it doesn't work...?
+
+
