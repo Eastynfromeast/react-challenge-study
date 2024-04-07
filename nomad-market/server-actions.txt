@@ -42,3 +42,28 @@ how to create API Route
         });
         console.log(await response.json());
     };
+
+# Server Asctions
+    const onFormSubmit = async () => {
+		"use server";
+		console.log("i run in the server baby!");
+	};
+        "use server" cannot be done inside the "use client" compoent 
+    
+    async function onFormSubmit(formData: FormData) {
+		"use server";
+		console.log(formData.get("email"), formData.get("password"));
+		console.log("i run in the server baby!");
+	}
+
+    <form action={onFormSubmit} className="flex flex-col gap-3"> ... </form>
+
+    ## how to communicate with server action progress with our UI 
+        let user know these sever action will take time
+            React.js hook => useFormStatus
+            const {pending} = useFormStatus();
+                but this hook cannot be used next to the form triggering the action 
+                should only be used inside the child of the form!
+                ==> put this inside FormButton
+                +) FormButton should need "use client" because now it becomes interactive === using React
+                this hook automatically find the parent form
