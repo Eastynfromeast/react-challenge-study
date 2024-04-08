@@ -1,0 +1,53 @@
+# Next.JS Setup
+    version
+        alpha
+        beta
+        RC === Release Candidate
+
+#Prisma
+    is NextJS ORM 
+    Object Relational Mapping
+    Prisma allows you to talk to db
+    create client
+    going to use MySQL
+
+    npx prisma init
+    Next steps:
+    1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+    2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb.
+    3. Run prisma db pull to turn your database schema into a Prisma schema.
+    4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+
+    model User{
+        id Int @id @default(autoincrement())
+        name String
+        phone Int? @unique
+        email String? @unique
+        avatar String?
+        createdAt DateTime @default(now())
+        updatedAt DateTime @updatedAt
+    }
+
+#PlanetScale
+    The MySQL - compatible serverless database platform
+    serverless? we don't need to manage server
+    MySQL - compatible? using something a little bit different with MySQL
+    Vitess - built at Google to scale YouTube.com
+    Scalable. Reliable. MySQL-compatible. Cloud-native. Database.
+        - scalability
+        - manageability
+        - shard management
+        - performance
+        - connection pooling
+        - workflow
+
+
+#Quiz
+    1. Prisma is an ORM
+    2. We need an ORM to talk to our db not using SQL
+    3. Typescript Prisma Client helps us talk to our database using Typescript
+    4. ? means is optional === not required
+    5. PlanetScale is a Serverless MySQL - compatible Database Provider
+    6. Referential Integrity is when the database makes sure a Foreign Key exists before saving a reference to them
+    7. We cannot run the Prisma Client in the browser
+    8. An API route ion /api/users/create should be created in /pages/api/users/create.js
