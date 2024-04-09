@@ -28,6 +28,10 @@
         updatedAt DateTime @updatedAt
     }
 
+    prisma will look your schema.prisma file for...
+        1. push models to db and do your SQL migration for you
+        2. create a client to talk to your db and add some sort of types autocomplete to your file
+
 #PlanetScale
     The MySQL - compatible serverless database platform
     serverless? we don't need to manage server
@@ -40,6 +44,81 @@
         - performance
         - connection pooling
         - workflow
+
+    fake database to deploy 
+    you don't have to download MySQL
+
+    how do we create a secure connection with PlanetScale
+        pscale connect : secure connection 
+
+    MySQL compatible ?
+        little bit different with MySQL
+
+    foreign key constrain?
+        Users DB:
+            id: 1 username:nico
+        
+        Comments DB:
+            id: 1 text:wow! user:(Users DB:5)
+            normal MySQL, PostgreSQL will have error
+        
+        Vitess is focus on the scalability
+            they do not check if the user 5 exists or not
+            => DB will not stop us when we using pscale
+                Prisma will checking it 
+
+    npx prisma db push
+        Environment variables loaded from .env
+        Prisma schema loaded from prisma/schema.prisma
+        Datasource "db": PostgreSQL database "postgres", schema "public" at "aws-0-ap-northeast-2.pooler.supabase.com:5432"
+
+        Generated Prisma Client (v5.12.1) to ./node_modules/@prisma/client in 54ms
+
+    ## Prisma Client
+        Prisma modifies our database
+        nice admin panel : prisma studio
+            npx prisma studio
+
+        /lib/client.ts
+            npm i @prisma/client - not development dependency we are going to use it for real
+
+            import { PrismaClient } from "@prisma/client";
+
+            const client = new PrismaClient();
+
+            client.user.create({
+                data: {
+                    email: "hi",
+                    name: "hi",
+                },
+            });
+
+        we should not be able to run PrismaClient on the browser!
+
+
+    ++ Supabase
+        https://github.com/DaehunGwak/react-playground/pull/31
+
+        PostgreSQL
+            PostgreSQL is a powerful, open source object-relational database management system（ORDBMS） with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
+
+            PostgreSQL supports a large part of the SQL standard and offers many modern features:
+                complex queries
+                foreign keys
+                triggers
+                updatable views
+                transactional integrity
+                multiversion concurrency control
+
+            PostgreSQL can be extended by the user in many ways, for example by adding new
+                data types
+                functions
+                operators
+                aggregate functions
+                index methods
+                procedural languages
+        
+        npx prisma migrate dev
 
 
 #Quiz
